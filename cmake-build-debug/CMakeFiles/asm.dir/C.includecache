@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../general/includes/asm.h
+libft.h
+../general/includes/libft.h
+
+../general/libftprintf/includes/libft.h
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+sys/types.h
+-
+
+/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/main.c
+asm.h
+/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/asm.h
+
