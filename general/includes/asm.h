@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/14 18:26:44 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/14 19:59:37 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef			enum
 {
 	OPERATOR,
 	COMMAND,
+	STRING,
 	REGISTER,
 	SEPARATOR,
 	LABEL,
@@ -116,7 +117,7 @@ void			skip_comment(t_asm *sasm, char *row);
 void			skip_whitespace(t_asm *sasm, char *row);
 void			process_file(t_asm *sasm);
 void			parse_command(t_asm *sasm, char *row);
-
+void			parse_string(t_asm *sasm, char *row);
 /*
 ** t_token
 */

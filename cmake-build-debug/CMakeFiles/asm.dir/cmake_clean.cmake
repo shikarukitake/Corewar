@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/asm.dir/general/srcs/debug_only.c.o"
   "CMakeFiles/asm.dir/general/srcs/main.c.o"
   "CMakeFiles/asm.dir/general/srcs/parse_command.c.o"
   "CMakeFiles/asm.dir/general/srcs/process_file.c.o"

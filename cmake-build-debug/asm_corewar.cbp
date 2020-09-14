@@ -507,6 +507,9 @@
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/libftprintf/srcs/width_parser.c">
 			<Option target="ftprintf"/>
 		</Unit>
+		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/debug_only.c">
+			<Option target="asm"/>
+		</Unit>
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/main.c">
 			<Option target="asm"/>
 		</Unit>

@@ -13,6 +13,6 @@ add_library(ftprintf STATIC ${LIBFT_FILES})
 
 
 # lem-in
-add_executable(asm general/srcs/main.c general/includes/asm.h general/srcs/t_asm.c general/srcs/service.c general/srcs/read_file.c general/srcs/write_file.c general/srcs/special_gnl.c general/srcs/process_file.c general/srcs/token.c general/srcs/parse_command.c)
+add_executable(asm general/srcs/main.c general/includes/asm.h general/srcs/t_asm.c general/srcs/service.c general/srcs/read_file.c general/srcs/write_file.c general/srcs/special_gnl.c general/srcs/process_file.c general/srcs/token.c general/srcs/parse_command.c general/srcs/debug_only.c)
 target_link_libraries(asm ${PROJECT_BINARY_DIR}/libftprintf.a)
 add_dependencies(asm ftprintf)

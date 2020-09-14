@@ -19,18 +19,17 @@ void	parse_token(t_asm *sasm, char *row)
 		add_token(sasm, init_token(sasm, NEW_LINE));
 		sasm->row++;
 	}
-	else
-	{
-
-	}
+	else if (row[sasm->i] == '"')
+		parse_string(sasm, row);
 }
 
 void	parse_tokens(t_asm *sasm)
 {
 	sasm->row = 0;
-	sasm->i = 0;
+
 	while (sasm->file[sasm->row])
 	{
+		sasm->i = 0;
 		while (sasm->file[sasm->row][sasm->i])
 		{
 			skip_whitespace(sasm, sasm->file[sasm->row]);

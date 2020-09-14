@@ -33,12 +33,12 @@ t_asm	*error_f(char *error, char init)
 {
 	static t_asm	*sasm;
 
-	if (init)
+	if (init == 1)
 	{
 		sasm = init_asm();
 		return (sasm);
 	}
-	if (sasm->row >= 0 && sasm->i >= 0)
+	if (init == 2)
 		write_col_row(sasm, error);
 	free_asm(sasm);
 	ft_error_t(error);

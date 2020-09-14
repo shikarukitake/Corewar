@@ -3558,6 +3558,33 @@ general/libftprintf/srcs/width_parser.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftprintf.dir/build.make CMakeFiles/ftprintf.dir/general/libftprintf/srcs/width_parser.c.s
 .PHONY : general/libftprintf/srcs/width_parser.c.s
 
+general/srcs/debug_only.o: general/srcs/debug_only.c.o
+
+.PHONY : general/srcs/debug_only.o
+
+# target to build an object file
+general/srcs/debug_only.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/debug_only.c.o
+.PHONY : general/srcs/debug_only.c.o
+
+general/srcs/debug_only.i: general/srcs/debug_only.c.i
+
+.PHONY : general/srcs/debug_only.i
+
+# target to preprocess a source file
+general/srcs/debug_only.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/debug_only.c.i
+.PHONY : general/srcs/debug_only.c.i
+
+general/srcs/debug_only.s: general/srcs/debug_only.c.s
+
+.PHONY : general/srcs/debug_only.s
+
+# target to generate assembly for a file
+general/srcs/debug_only.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/debug_only.c.s
+.PHONY : general/srcs/debug_only.c.s
+
 general/srcs/main.o: general/srcs/main.c.o
 
 .PHONY : general/srcs/main.o
@@ -4189,6 +4216,9 @@ help:
 	@echo "... general/libftprintf/srcs/width_parser.o"
 	@echo "... general/libftprintf/srcs/width_parser.i"
 	@echo "... general/libftprintf/srcs/width_parser.s"
+	@echo "... general/srcs/debug_only.o"
+	@echo "... general/srcs/debug_only.i"
+	@echo "... general/srcs/debug_only.s"
 	@echo "... general/srcs/main.o"
 	@echo "... general/srcs/main.i"
 	@echo "... general/srcs/main.s"
