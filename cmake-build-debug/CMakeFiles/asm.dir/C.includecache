@@ -9,6 +9,12 @@
 ../general/includes/asm.h
 libft.h
 ../general/includes/libft.h
+op.h
+../general/includes/op.h
+fcntl.h
+../general/includes/fcntl.h
+
+../general/includes/op.h
 
 ../general/libftprintf/includes/libft.h
 stdlib.h

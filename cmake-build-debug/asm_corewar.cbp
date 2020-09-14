@@ -510,13 +510,25 @@
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/main.c">
 			<Option target="asm"/>
 		</Unit>
+		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/parse_command.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/process_file.c">
+			<Option target="asm"/>
+		</Unit>
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/read_file.c">
 			<Option target="asm"/>
 		</Unit>
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/service.c">
 			<Option target="asm"/>
 		</Unit>
+		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/special_gnl.c">
+			<Option target="asm"/>
+		</Unit>
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/t_asm.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/token.c">
 			<Option target="asm"/>
 		</Unit>
 		<Unit filename="/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/write_file.c">

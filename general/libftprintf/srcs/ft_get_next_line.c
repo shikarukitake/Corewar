@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <limits.h>
 
-static int	ft_line_maker(const int fd, char **help, char **line)
+static int	ft_line_maker(const int fd, char **help, char **line)//todo protect
 {
 	size_t	len;
 	char	*iter;

@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/09/09 20:47:35 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/14 17:45:50 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@
 # define COMMENT_CHAR			'#'
 # define ALT_COMMENT_CHAR		';'
 # define LABEL_CHAR				':'
-# define DIRECT_CHAR				'%'
+# define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
+# define COMMAND_CHAR			'.'
 
 # define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
 

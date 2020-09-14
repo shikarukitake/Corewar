@@ -142,13 +142,69 @@ CMakeFiles/asm.dir/general/srcs/write_file.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/asm.dir/general/srcs/write_file.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/write_file.c -o CMakeFiles/asm.dir/general/srcs/write_file.c.s
 
+CMakeFiles/asm.dir/general/srcs/special_gnl.c.o: CMakeFiles/asm.dir/flags.make
+CMakeFiles/asm.dir/general/srcs/special_gnl.c.o: ../general/srcs/special_gnl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/asm.dir/general/srcs/special_gnl.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/asm.dir/general/srcs/special_gnl.c.o   -c /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/special_gnl.c
+
+CMakeFiles/asm.dir/general/srcs/special_gnl.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/asm.dir/general/srcs/special_gnl.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/special_gnl.c > CMakeFiles/asm.dir/general/srcs/special_gnl.c.i
+
+CMakeFiles/asm.dir/general/srcs/special_gnl.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/asm.dir/general/srcs/special_gnl.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/special_gnl.c -o CMakeFiles/asm.dir/general/srcs/special_gnl.c.s
+
+CMakeFiles/asm.dir/general/srcs/process_file.c.o: CMakeFiles/asm.dir/flags.make
+CMakeFiles/asm.dir/general/srcs/process_file.c.o: ../general/srcs/process_file.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/asm.dir/general/srcs/process_file.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/asm.dir/general/srcs/process_file.c.o   -c /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/process_file.c
+
+CMakeFiles/asm.dir/general/srcs/process_file.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/asm.dir/general/srcs/process_file.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/process_file.c > CMakeFiles/asm.dir/general/srcs/process_file.c.i
+
+CMakeFiles/asm.dir/general/srcs/process_file.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/asm.dir/general/srcs/process_file.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/process_file.c -o CMakeFiles/asm.dir/general/srcs/process_file.c.s
+
+CMakeFiles/asm.dir/general/srcs/token.c.o: CMakeFiles/asm.dir/flags.make
+CMakeFiles/asm.dir/general/srcs/token.c.o: ../general/srcs/token.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/asm.dir/general/srcs/token.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/asm.dir/general/srcs/token.c.o   -c /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/token.c
+
+CMakeFiles/asm.dir/general/srcs/token.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/asm.dir/general/srcs/token.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/token.c > CMakeFiles/asm.dir/general/srcs/token.c.i
+
+CMakeFiles/asm.dir/general/srcs/token.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/asm.dir/general/srcs/token.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/token.c -o CMakeFiles/asm.dir/general/srcs/token.c.s
+
+CMakeFiles/asm.dir/general/srcs/parse_command.c.o: CMakeFiles/asm.dir/flags.make
+CMakeFiles/asm.dir/general/srcs/parse_command.c.o: ../general/srcs/parse_command.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/asm.dir/general/srcs/parse_command.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/asm.dir/general/srcs/parse_command.c.o   -c /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/parse_command.c
+
+CMakeFiles/asm.dir/general/srcs/parse_command.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/asm.dir/general/srcs/parse_command.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/parse_command.c > CMakeFiles/asm.dir/general/srcs/parse_command.c.i
+
+CMakeFiles/asm.dir/general/srcs/parse_command.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/asm.dir/general/srcs/parse_command.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/parse_command.c -o CMakeFiles/asm.dir/general/srcs/parse_command.c.s
+
 # Object files for target asm
 asm_OBJECTS = \
 "CMakeFiles/asm.dir/general/srcs/main.c.o" \
 "CMakeFiles/asm.dir/general/srcs/t_asm.c.o" \
 "CMakeFiles/asm.dir/general/srcs/service.c.o" \
 "CMakeFiles/asm.dir/general/srcs/read_file.c.o" \
-"CMakeFiles/asm.dir/general/srcs/write_file.c.o"
+"CMakeFiles/asm.dir/general/srcs/write_file.c.o" \
+"CMakeFiles/asm.dir/general/srcs/special_gnl.c.o" \
+"CMakeFiles/asm.dir/general/srcs/process_file.c.o" \
+"CMakeFiles/asm.dir/general/srcs/token.c.o" \
+"CMakeFiles/asm.dir/general/srcs/parse_command.c.o"
 
 # External object files for target asm
 asm_EXTERNAL_OBJECTS =
@@ -158,10 +214,14 @@ asm: CMakeFiles/asm.dir/general/srcs/t_asm.c.o
 asm: CMakeFiles/asm.dir/general/srcs/service.c.o
 asm: CMakeFiles/asm.dir/general/srcs/read_file.c.o
 asm: CMakeFiles/asm.dir/general/srcs/write_file.c.o
+asm: CMakeFiles/asm.dir/general/srcs/special_gnl.c.o
+asm: CMakeFiles/asm.dir/general/srcs/process_file.c.o
+asm: CMakeFiles/asm.dir/general/srcs/token.c.o
+asm: CMakeFiles/asm.dir/general/srcs/parse_command.c.o
 asm: CMakeFiles/asm.dir/build.make
 asm: libftprintf.a
 asm: CMakeFiles/asm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable asm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable asm"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/asm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

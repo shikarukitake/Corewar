@@ -3585,6 +3585,60 @@ general/srcs/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/main.c.s
 .PHONY : general/srcs/main.c.s
 
+general/srcs/parse_command.o: general/srcs/parse_command.c.o
+
+.PHONY : general/srcs/parse_command.o
+
+# target to build an object file
+general/srcs/parse_command.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/parse_command.c.o
+.PHONY : general/srcs/parse_command.c.o
+
+general/srcs/parse_command.i: general/srcs/parse_command.c.i
+
+.PHONY : general/srcs/parse_command.i
+
+# target to preprocess a source file
+general/srcs/parse_command.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/parse_command.c.i
+.PHONY : general/srcs/parse_command.c.i
+
+general/srcs/parse_command.s: general/srcs/parse_command.c.s
+
+.PHONY : general/srcs/parse_command.s
+
+# target to generate assembly for a file
+general/srcs/parse_command.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/parse_command.c.s
+.PHONY : general/srcs/parse_command.c.s
+
+general/srcs/process_file.o: general/srcs/process_file.c.o
+
+.PHONY : general/srcs/process_file.o
+
+# target to build an object file
+general/srcs/process_file.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/process_file.c.o
+.PHONY : general/srcs/process_file.c.o
+
+general/srcs/process_file.i: general/srcs/process_file.c.i
+
+.PHONY : general/srcs/process_file.i
+
+# target to preprocess a source file
+general/srcs/process_file.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/process_file.c.i
+.PHONY : general/srcs/process_file.c.i
+
+general/srcs/process_file.s: general/srcs/process_file.c.s
+
+.PHONY : general/srcs/process_file.s
+
+# target to generate assembly for a file
+general/srcs/process_file.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/process_file.c.s
+.PHONY : general/srcs/process_file.c.s
+
 general/srcs/read_file.o: general/srcs/read_file.c.o
 
 .PHONY : general/srcs/read_file.o
@@ -3639,6 +3693,33 @@ general/srcs/service.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/service.c.s
 .PHONY : general/srcs/service.c.s
 
+general/srcs/special_gnl.o: general/srcs/special_gnl.c.o
+
+.PHONY : general/srcs/special_gnl.o
+
+# target to build an object file
+general/srcs/special_gnl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/special_gnl.c.o
+.PHONY : general/srcs/special_gnl.c.o
+
+general/srcs/special_gnl.i: general/srcs/special_gnl.c.i
+
+.PHONY : general/srcs/special_gnl.i
+
+# target to preprocess a source file
+general/srcs/special_gnl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/special_gnl.c.i
+.PHONY : general/srcs/special_gnl.c.i
+
+general/srcs/special_gnl.s: general/srcs/special_gnl.c.s
+
+.PHONY : general/srcs/special_gnl.s
+
+# target to generate assembly for a file
+general/srcs/special_gnl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/special_gnl.c.s
+.PHONY : general/srcs/special_gnl.c.s
+
 general/srcs/t_asm.o: general/srcs/t_asm.c.o
 
 .PHONY : general/srcs/t_asm.o
@@ -3665,6 +3746,33 @@ general/srcs/t_asm.s: general/srcs/t_asm.c.s
 general/srcs/t_asm.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/t_asm.c.s
 .PHONY : general/srcs/t_asm.c.s
+
+general/srcs/token.o: general/srcs/token.c.o
+
+.PHONY : general/srcs/token.o
+
+# target to build an object file
+general/srcs/token.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/token.c.o
+.PHONY : general/srcs/token.c.o
+
+general/srcs/token.i: general/srcs/token.c.i
+
+.PHONY : general/srcs/token.i
+
+# target to preprocess a source file
+general/srcs/token.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/token.c.i
+.PHONY : general/srcs/token.c.i
+
+general/srcs/token.s: general/srcs/token.c.s
+
+.PHONY : general/srcs/token.s
+
+# target to generate assembly for a file
+general/srcs/token.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/general/srcs/token.c.s
+.PHONY : general/srcs/token.c.s
 
 general/srcs/write_file.o: general/srcs/write_file.c.o
 
@@ -4084,15 +4192,27 @@ help:
 	@echo "... general/srcs/main.o"
 	@echo "... general/srcs/main.i"
 	@echo "... general/srcs/main.s"
+	@echo "... general/srcs/parse_command.o"
+	@echo "... general/srcs/parse_command.i"
+	@echo "... general/srcs/parse_command.s"
+	@echo "... general/srcs/process_file.o"
+	@echo "... general/srcs/process_file.i"
+	@echo "... general/srcs/process_file.s"
 	@echo "... general/srcs/read_file.o"
 	@echo "... general/srcs/read_file.i"
 	@echo "... general/srcs/read_file.s"
 	@echo "... general/srcs/service.o"
 	@echo "... general/srcs/service.i"
 	@echo "... general/srcs/service.s"
+	@echo "... general/srcs/special_gnl.o"
+	@echo "... general/srcs/special_gnl.i"
+	@echo "... general/srcs/special_gnl.s"
 	@echo "... general/srcs/t_asm.o"
 	@echo "... general/srcs/t_asm.i"
 	@echo "... general/srcs/t_asm.s"
+	@echo "... general/srcs/token.o"
+	@echo "... general/srcs/token.i"
+	@echo "... general/srcs/token.s"
 	@echo "... general/srcs/write_file.o"
 	@echo "... general/srcs/write_file.i"
 	@echo "... general/srcs/write_file.s"

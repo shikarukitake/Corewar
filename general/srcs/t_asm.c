@@ -14,8 +14,10 @@ t_asm	*init_asm(void)
 		sasm->code = NULL;
 		sasm->tokens = NULL;
 		sasm->fd = 0;
-		sasm->i = 0;
-		sasm->row = 0;
+		sasm->i = -1;
+		sasm->row = -1;
+		sasm->line = NULL;
+		sasm->dline = NULL;
 	}
 	return (sasm);
 }
@@ -27,9 +29,16 @@ void	del_tokens(void *list, size_t size)
 
 void	free_asm(t_asm *sasm)
 {
-	if (sasm->code)
-		free(sasm->code);
-	if (sasm->tokens)
-		ft_lstdel(&(sasm->tokens), &del_tokens);
-	free(sasm);
+	if (sasm)
+	{
+		if (sasm->code)
+			free(sasm->code);
+		if (sasm->tokens)
+			ft_lstdel(&(sasm->tokens), &del_tokens);
+		if (sasm->line)
+			free(sasm->line);
+		if (sasm->dline)
+			to_free_dstr(sasm->dline);
+		free(sasm);
+	}
 }

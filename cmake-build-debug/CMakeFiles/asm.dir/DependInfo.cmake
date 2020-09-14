@@ -5,9 +5,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/main.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/main.c.o"
+  "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/parse_command.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/parse_command.c.o"
+  "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/process_file.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/process_file.c.o"
   "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/read_file.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/read_file.c.o"
   "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/service.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/service.c.o"
+  "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/special_gnl.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/special_gnl.c.o"
   "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/t_asm.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/t_asm.c.o"
+  "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/token.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/token.c.o"
   "/Users/sdagger/Projects/corewar_project/Corewar/general/srcs/write_file.c" "/Users/sdagger/Projects/corewar_project/Corewar/cmake-build-debug/CMakeFiles/asm.dir/general/srcs/write_file.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

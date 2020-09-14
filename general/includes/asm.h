@@ -1,8 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
+/*   Updated: 2020/09/14 18:26:44 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 # include "libft.h"
 # include "op.h"
+# include "fcntl.h"
+# define USAGE "Usage: ./asm file.s\n"
+# define COLOR_RED              "\x1b[31m"
+# define COLOR_GREEN    "\x1b[32m"
+# define COLOR_YELLOW   "\x1b[33m"
+# define COLOR_PINK             "\x1b[1;35m"
+# define COLOR_BLUE             "\x1b[34m"
+# define COLOR_MAGENTA  "\x1b[35m"
+# define COLOR_CYAN             "\x1b[36m"
+# define COLOR_RESET    "\x1b[0m"
 
 /*
 ** t_asm structure
@@ -23,6 +44,9 @@ typedef struct	s_asm
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
+	char				*line;
+	char				**dline;
+	char				**file;
 }				t_asm;
 
 /*
@@ -59,10 +83,9 @@ typedef			enum
 typedef struct	s_token
 {
 	char		*content;
-	t_ctype		*type;
+	t_ctype		type;
 	unsigned	i;
 	unsigned	row;
-
 }				t_token;
 
 /*
@@ -75,12 +98,36 @@ t_asm			*error_f(char *error, char init);
 ** read_file
 */
 
-void			read_file(t_asm *sasm);
+void			read_file(t_asm *sasm, char *file);
 
 /*
 ** write_file
 */
 
 void			write_file(t_asm *sasm);
+
+/*
+** process_file
+*/
+
+int				is_whitespace(int c);
+int				is_delimiter(int c);
+void			skip_comment(t_asm *sasm, char *row);
+void			skip_whitespace(t_asm *sasm, char *row);
+void			process_file(t_asm *sasm);
+void			parse_command(t_asm *sasm, char *row);
+
+/*
+** t_token
+*/
+
+t_token			*init_token(t_asm *sasm, t_ctype type);
+void			add_token(t_asm *sasm, t_token	*token);
+
+/*
+** some extended stuff
+*/
+
+int				nget_next_line(const int fd, char **line);
 
 #endif

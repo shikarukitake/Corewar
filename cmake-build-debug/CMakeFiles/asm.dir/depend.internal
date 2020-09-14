@@ -3,5 +3,34 @@
 
 CMakeFiles/asm.dir/general/srcs/main.c.o
  ../general/includes/asm.h
+ ../general/includes/op.h
  ../general/libftprintf/includes/libft.h
  /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/main.c
+CMakeFiles/asm.dir/general/srcs/process_file.c.o
+ ../general/includes/asm.h
+ ../general/includes/op.h
+ ../general/libftprintf/includes/libft.h
+ /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/process_file.c
+CMakeFiles/asm.dir/general/srcs/read_file.c.o
+ ../general/includes/asm.h
+ ../general/includes/op.h
+ ../general/libftprintf/includes/libft.h
+ /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/read_file.c
+CMakeFiles/asm.dir/general/srcs/service.c.o
+ ../general/includes/asm.h
+ ../general/includes/op.h
+ ../general/libftprintf/includes/libft.h
+ /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/service.c
+CMakeFiles/asm.dir/general/srcs/special_gnl.c.o
+ ../general/libftprintf/includes/libft.h
+ /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/special_gnl.c
+CMakeFiles/asm.dir/general/srcs/t_asm.c.o
+ ../general/includes/asm.h
+ ../general/includes/op.h
+ ../general/libftprintf/includes/libft.h
+ /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/t_asm.c
+CMakeFiles/asm.dir/general/srcs/write_file.c.o
+ ../general/includes/asm.h
+ ../general/includes/op.h
+ ../general/libftprintf/includes/libft.h
+ /Users/sdagger/Projects/corewar_project/Corewar/general/srcs/write_file.c
