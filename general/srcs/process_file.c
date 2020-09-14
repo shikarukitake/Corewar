@@ -45,4 +45,5 @@ void	process_file(t_asm *sasm)
 {
 	print_file(sasm);
 	parse_tokens(sasm);
+	ft_lstiter(sasm->tokens, &print_token);
 }

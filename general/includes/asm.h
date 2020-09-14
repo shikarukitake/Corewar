@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/14 19:59:37 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/14 20:18:08 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,8 @@ void			add_token(t_asm *sasm, t_token	*token);
 */
 
 int				nget_next_line(const int fd, char **line);
+
+
+void			print_token(t_list *list);
 
 #endif
