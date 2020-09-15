@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:28:08 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/14 20:06:21 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/15 12:05:14 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	parse_command(t_asm *sasm, char *row)
 	int		start;
 	t_token	*token;
 
+	token = init_token(sasm, COMMAND);
 	start = ++(sasm->i);
 	while (row[sasm->i] && ft_strchr(LABEL_CHARS, row[sasm->i]))
 		sasm->i++;
 	if ((sasm->i - start) && is_whitespace(row[sasm->i]))
 	{
-		token = init_token(sasm, COMMAND);
 		token->content = ft_strsub(row, start, sasm->i - start);
 		if (token->content == NULL)
 			error_f("ft_strsub malloc", 0);
@@ -46,6 +46,7 @@ void fill_token_content(const t_asm *sasm, const char *row, int start, t_token *
 	}
 	else
 		token->content = temp;
+
 }
 
 
@@ -68,6 +69,7 @@ void	parse_string(t_asm *sasm, char *row)
 		}
 		sasm->i++;
 	}
+	fill_token_content(sasm, row, start, token);
 	add_token(sasm, token);
 	sasm->i++;
 }

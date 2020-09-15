@@ -24,9 +24,17 @@ t_asm	*init_asm(void)
 	return (sasm);
 }
 
-void	del_tokens(void *list, size_t size)
+void	del_tokens(void *content, size_t size)
 {
-	//todo create
+	t_token	*token;
+
+	token = content;
+	if (token)
+	{
+		if (token->content)
+			free(token->content);
+		free(token);
+	}
 }
 
 void	free_asm(t_asm *sasm)
@@ -41,6 +49,8 @@ void	free_asm(t_asm *sasm)
 			free(sasm->line);
 		if (sasm->dline)
 			to_free_dstr(sasm->dline);
+		if (sasm->file)
+			to_free_dstr(sasm->file);
 		free(sasm);
 	}
 }

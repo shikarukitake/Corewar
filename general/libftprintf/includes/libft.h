@@ -160,6 +160,7 @@ t_list			*ft_lstnew_copy(void const *content, size_t content_size);
 int				ft_lst_pb_copy(t_list **begin_list,
 					   void const *content, size_t content_size);
 void			ft_lstiter_ext(t_list *lst, void *stuff, void (*f)(t_list *, void *));
+void			ft_lstiter_n(t_list *lst, void (*f)(t_list *elem));
 
 /*
 ** Some new stuff

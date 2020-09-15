@@ -6,7 +6,7 @@
 /*   By: sdagger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 23:00:13 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/03 20:54:20 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/15 12:22:49 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 		if (lst->next)
 			ft_lstiter(lst->next, f);
 		f(lst);
+	}
+}
+
+void	ft_lstiter_n(t_list *lst, void (*f)(t_list *elem))
+{
+	if (lst)
+	{
+		f(lst);
+		if (lst->next)
+			ft_lstiter_n(lst->next, f);
 	}
 }
 

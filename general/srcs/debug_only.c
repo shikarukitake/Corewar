@@ -1,9 +1,25 @@
 #include "asm.h"
 
+char	*strctypes[] =
+		{
+				"OPERATOR",
+				"COMMAND",
+				"STRING",
+				"REGISTER",
+				"SEPARATOR",
+				"LABEL",
+				"DIRECT",
+				"DIRECT_LABEL",
+				"INDIRECT",
+				"INDIRECT_LABEL",
+				"NEW_LINE",
+				"END"
+		};
+
 void	print_token(t_list *list)
 {
 	t_token		*token;
 
 	token = list->content;
-	ft_printf("\nContent:'%s'\nType:%d\n", token->content, token->type);
+	ft_printf("\nContent:'%s'\nType:%s\n", token->content, strctypes[token->type]);
 }
