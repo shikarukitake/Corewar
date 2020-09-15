@@ -16,7 +16,7 @@ void	write_col_row(t_asm *sasm, char const *error)
 			free(col);
 		ft_error_t("malloc when showing error");
 	}
-	write(2, "ERROR\n", 5);
+	write(2, "ERROR\n", 6);
 	if (error)
 		write(2, error, ft_strlen(error));
 	write(2, "\nROW:", 5);

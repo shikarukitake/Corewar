@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/15 12:20:27 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/15 20:45:25 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_asm
 	int					fd;
 	int					i;
 	int					row;
+	int					start;
 	t_list				*tokens;
 	char				*code;
 	unsigned int		magic;
@@ -118,6 +119,17 @@ void			skip_whitespace(t_asm *sasm, char *row);
 void			process_file(t_asm *sasm);
 void			parse_command(t_asm *sasm, char *row);
 void			parse_string(t_asm *sasm, char *row);
+void			parse_label(t_asm *sasm, char *row);
+void			parse_newline(t_asm *sasm);
+void			parse_separator(t_asm *sasm);
+
+/*
+** process_file_extra (some service function)
+*/
+
+int				only_digit(t_asm *sasm, char *row);
+int				is_register(t_asm *sasm, char *row);
+
 /*
 ** t_token
 */
