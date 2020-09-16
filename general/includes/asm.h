@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/15 20:45:25 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/16 17:13:46 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void			read_file(t_asm *sasm, char *file);
 void			write_file(t_asm *sasm);
 
 /*
-** process_file
+** process_file parsing
 */
 
 int				is_whitespace(int c);
@@ -122,6 +122,7 @@ void			parse_string(t_asm *sasm, char *row);
 void			parse_label(t_asm *sasm, char *row);
 void			parse_newline(t_asm *sasm);
 void			parse_separator(t_asm *sasm);
+void			parse_token(t_asm *sasm, char *row);
 
 /*
 ** process_file_extra (some service function)
@@ -130,6 +131,12 @@ void			parse_separator(t_asm *sasm);
 int				only_digit(t_asm *sasm, char *row);
 int				is_register(t_asm *sasm, char *row);
 
+/*
+** process_file checking
+*/
+
+void			find_name_and_comment(t_list *list, void *stuff);
+void			check_tokens(t_asm *sasm);
 /*
 ** t_token
 */

@@ -32,6 +32,16 @@ void	ft_lstiter_n(t_list *lst, void (*f)(t_list *elem))
 	}
 }
 
+void	ft_lstiter_ext_n(t_list *lst, void *stuff, void (*f)(t_list *, void *))
+{
+	if (lst)
+	{
+		f(lst, stuff);
+		if (lst->next)
+			ft_lstiter_ext(lst->next, stuff, f);
+	}
+}
+
 void	ft_lstiter_ext(t_list *lst, void *stuff, void (*f)(t_list *, void *))
 {
 	if (lst)
