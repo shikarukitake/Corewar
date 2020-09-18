@@ -32,15 +32,28 @@ void	parse_tokens(t_asm *sasm)
 }
 
 
+void	check_end(t_asm *sasm)
+{
+	t_list	*tokens;
+
+	tokens = sasm->tokens;
+	while (tokens->next)
+		tokens = tokens->next;
+	if (((t_token*)(tokens->content))->type != NEW_LINE)
+		error_f("No new_line at the end of file", 0);
+}
+
 void	process_file(t_asm *sasm)
 {
 	print_file(sasm);
 	parse_tokens(sasm);
+	check_end(sasm);
+	add_token(sasm, init_token(sasm, END));
 	ft_lstiter_n(sasm->tokens, &print_token);
-
 	ft_lstiter_ext_n(sasm->tokens, sasm, &find_name_and_comment);
 	if ((!sasm->prog_name[0] || !sasm->comment[0]))
 		error_f("There is no name or comment", 0);
-	check_tokens(sasm);
+
+	convert_tokens(sasm, sasm->tokens);
 
 }

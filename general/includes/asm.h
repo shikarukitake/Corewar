@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/16 17:13:46 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/18 20:24:16 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 # define COLOR_MAGENTA  "\x1b[35m"
 # define COLOR_CYAN             "\x1b[36m"
 # define COLOR_RESET    "\x1b[0m"
-
+# define C_REG 1
+# define C_DIR 2
+# define C_IND 3
 /*
 ** t_asm structure
 ** fd - file descriptor
@@ -40,7 +42,7 @@ typedef struct	s_asm
 	int					row;
 	int					start;
 	t_list				*tokens;
-	char				*code;
+	unsigned char		*code;
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int		prog_size;
@@ -48,6 +50,7 @@ typedef struct	s_asm
 	char				*line;
 	char				**dline;
 	char				**file;
+	long				code_size;
 }				t_asm;
 
 /*
@@ -136,7 +139,8 @@ int				is_register(t_asm *sasm, char *row);
 */
 
 void			find_name_and_comment(t_list *list, void *stuff);
-void			check_tokens(t_asm *sasm);
+void			convert_tokens(t_asm *sasm, t_list *tokens);
+
 /*
 ** t_token
 */

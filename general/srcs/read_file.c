@@ -41,4 +41,4 @@ void	read_file(t_asm *sasm, char *file)
 		i++;
 	}
 	close(sasm->fd);
-}
+}//todo get next line when in end of file new line without any characters
