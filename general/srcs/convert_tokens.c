@@ -70,6 +70,19 @@ t_op		get_op(t_list *tokens)
 	return (op_tab[16]);
 }
 
+t_list *select_next_token(t_list *tokens, const t_op *op, int i)
+{
+	if (i + 1 != op->count_arg)
+	{
+		if (token_type(tokens->next) != SEPARATOR)
+			error_f("There is no separator", 0);//todo where is separator
+		tokens = tokens->next->next;
+	}
+	else
+		tokens = tokens->next;
+	return tokens;
+}
+
 unsigned char	get_type_code(t_list *tokens, t_op *op, int i)
 {
 	unsigned char	code;
@@ -83,19 +96,55 @@ unsigned char	get_type_code(t_list *tokens, t_op *op, int i)
 			error_f("Wrong arguments for token", 0);//todo name of token in error
 		code |= (arg_type_code(tokens) << shift);
 		shift -= 2;
-		if (i + 1 != op->count_arg)
-		{
-			if (token_type(tokens->next) != SEPARATOR)
-				error_f("There is no separator", 0);//todo where is separator
-			tokens = tokens->next->next;
-		}
-		else
-			tokens = tokens->next;
+		tokens = select_next_token(tokens, op, i);
 		i++;
 	}
 	if (token_type(tokens) != NEW_LINE)
 		error_f("No new line after arguments", 0);//todo where is
 	return (code);
+}
+
+
+void procces_register(t_asm *sasm, t_token *token)
+{
+	sasm->code[sasm->i++] = ft_atoi(token->content + 1);
+}
+
+void procces_dir(t_asm *sasm, t_token *token, int dir_size)
+{
+	if (token->type == DIRECT_LABEL)
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
+void procces_ind(t_asm *sasm, t_token *token)
+{
+	if (token->type == INDIRECT_LABEL)
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
+
+void	process_args(t_asm *sasm, const t_list *tokens, int dir_size)
+{
+	if (arg_type(tokens) == T_REG)
+		procces_register(sasm, tokens->content);
+	else if (arg_type(tokens) == T_DIR)
+		procces_dir(sasm, tokens->content, dir_size);
+	else if (arg_type(tokens) == T_IND)
+		procces_ind(sasm, tokens->content);
+	else
+		error_f("Something wrong", 0);
 }
 
 t_list		*procces_operator(t_asm *sasm, t_list *tokens)
@@ -113,7 +162,8 @@ t_list		*procces_operator(t_asm *sasm, t_list *tokens)
 	i = 0;
 	while (i != op.count_arg)
 	{
-
+		process_args(sasm, tokens, op.dir_size);
+		tokens = select_next_token(tokens, &op, i);
 		i++;
 	}
 	return (tokens->next);
@@ -143,6 +193,8 @@ void	print_hex(t_asm *sasm)
 	while (i != sasm->code_size)
 	{
 		ft_printf("%x ", sasm->code[i]);
+		if (i % 50 == 0)
+			ft_printf("\n");
 		i++;
 	}
 }
@@ -174,4 +226,5 @@ void	convert_tokens(t_asm *sasm, t_list *tokens)
 		else
 			error_f("Unknown token", 0);//todo row index in error
 	}
+	print_hex(sasm);
 }
