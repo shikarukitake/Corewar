@@ -40,7 +40,7 @@ void	parse_direct(t_asm *sasm, char *row)
 	{
 		type = row[sasm->i] == ':' ? DIRECT_LABEL : DIRECT;
 		row[sasm->i] == ':' ? sasm->i++ : sasm->i;
-		sasm->start = row[sasm->start] == ':' ? sasm->start++ : sasm->start;
+		row[sasm->start] == ':' ? sasm->start++ : sasm->start;
 		while (row[sasm->i] && ft_strchr(LABEL_CHARS, row[sasm->i]))
 			sasm->i++;
 		if ((sasm->i - sasm->start) && is_delimiter(row[sasm->i]))

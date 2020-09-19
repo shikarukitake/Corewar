@@ -18,7 +18,7 @@ void	parse_label(t_asm *sasm, char *row)//todo Remove skipping chars
 
 	token = init_token(sasm, LABEL);
 	sasm->i++;
-	token->content = ft_strsub(row, sasm->start, sasm->i - sasm->start);
+	token->content = ft_strsub(row, sasm->start, sasm->i - sasm->start - 1);
 	if (token->content == NULL)
 		error_f("ft_strsub malloc", 0);
 	add_token(sasm, token);

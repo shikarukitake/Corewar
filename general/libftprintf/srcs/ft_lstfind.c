@@ -17,7 +17,7 @@ t_list	*ft_lstfind(t_list *lst, int (*finder)(void *, void *content),
 {
 	if (lst)
 	{
-		while (lst->next)
+		while (lst)
 		{
 			if (finder(lst->content, to_find) == 1)
 				return (lst);

@@ -9,9 +9,9 @@ int		main(int ac, char **av)
 		error_f(USAGE, 0);
 	read_file(sasm, av[1]);
 	process_file(sasm);
-	write_file(sasm);
+	write_file(sasm, av[1]);
 	free_asm(sasm);
-	ft_printf(COLOR_PINK "programm end\n" COLOR_RESET);
+//	ft_printf(COLOR_PINK "programm end\n" COLOR_RESET);
 	exit(0);
 	return (0);
 }

@@ -105,37 +105,82 @@ unsigned char	get_type_code(t_list *tokens, t_op *op, int i)
 }
 
 
-void procces_register(t_asm *sasm, t_token *token)
+void	procces_register(t_asm *sasm, t_token *token)
 {
 	sasm->code[sasm->i++] = ft_atoi(token->content + 1);
 }
 
-void procces_dir(t_asm *sasm, t_token *token, int dir_size)
+t_ref_label	*new_ref(char *name, int start, int end, int comm_start, t_ctype type)
 {
+	t_ref_label		*ref;
+
+	ref = malloc(sizeof(t_ref_label));
+	if (ref == NULL)
+		error_f("new_ref malloc", 0);
+	ref->name = ft_strdup(name);
+	if (ref->name == NULL)
+		error_f("new_ref malloc", 0);
+	ref->comm_start = comm_start;
+	ref->type = type;
+	ref->start = start;
+	ref->end = end;
+	return (ref);
+}
+
+void	procces_dir(t_asm *sasm, t_token *token, int dir_size)
+{
+	unsigned int	code;
+
 	if (token->type == DIRECT_LABEL)
 	{
-
+		if (!ft_lst_pb(&(sasm->ref_labels), new_ref(token->content, sasm->i,
+		sasm->i + dir_size, sasm->curr_start, token->type), sizeof(t_ref_label)))
+			error_f("proccess_dir lst malloc", 0);
+		code = 0;
+		while (dir_size != 0)
+		{
+			sasm->code[sasm->i++] = code >> (8 * (dir_size - 1));
+			dir_size--;
+		}
 	}
-	else
+	else if (token->type == DIRECT)
 	{
-
+		code = ft_atoi_l(token->content);//todo check
+		if (ft_atoi_l(token->content) > FT_INT_MAX)
+			error_f("wrong DIRECT content", 0);//todo check
+		while (dir_size != 0)
+		{
+			sasm->code[sasm->i++] = code >> (8 * (dir_size - 1));
+			dir_size--;
+		}
 	}
 }
 
-void procces_ind(t_asm *sasm, t_token *token)
+void	procces_ind(t_asm *sasm, t_token *token)
 {
+	unsigned int	code;
+
 	if (token->type == INDIRECT_LABEL)
 	{
-
+		if (!ft_lst_pb(&(sasm->ref_labels), new_ref(token->content, sasm->curr_start,
+		sasm->i + 2, sasm->i, token->type), sizeof(t_ref_label)))
+			error_f("proccess_dir lst malloc", 0);
+		code = 0;
+		sasm->code[sasm->i++] = code >> 8;
+		sasm->code[sasm->i++] = code;
 	}
 	else
 	{
-
+		code = ft_atoi_l(token->content);//todo check
+		if (ft_atoi_l(token->content) > FT_INT_MAX)
+			error_f("wrong DIRECT content", 0);//todo check
+		sasm->code[sasm->i++] = code >> 8;
+		sasm->code[sasm->i++] = code;
 	}
 }
 
 
-void	process_args(t_asm *sasm, const t_list *tokens, int dir_size)
+void	process_args(t_asm *sasm, t_list *tokens, int dir_size)
 {
 	if (arg_type(tokens) == T_REG)
 		procces_register(sasm, tokens->content);
@@ -155,6 +200,7 @@ t_list		*procces_operator(t_asm *sasm, t_list *tokens)
 	op = get_op(tokens);
 	if (op.name == 0)
 		error_f("wrong OPERATOR", 0);//todo print token content and row and i
+	sasm->curr_start = sasm->i;
 	sasm->code[sasm->i++] = op.op_cod;
 	tokens = tokens->next;
 	if (op.have_arg_code)
@@ -169,7 +215,7 @@ t_list		*procces_operator(t_asm *sasm, t_list *tokens)
 	return (tokens->next);
 }
 
-void check_code_size(t_asm *sasm)
+void	check_code_size(t_asm *sasm)
 {
 	if ((sasm->i + 14) >= CHAMP_MAX_SIZE)
 	{
@@ -181,22 +227,30 @@ void check_code_size(t_asm *sasm)
 	}
 }
 
-t_list *process_labels(t_asm *sasm, t_list *tokens)
+t_label	*new_label(char *name, int point)
 {
-	return (tokens->next);
+	t_label	*label;
+
+	label = malloc(sizeof(t_label));
+	if (label == NULL)
+		error_f("new_label malloc", 0);
+	label->name = ft_strdup(name);
+	if (label->name == NULL)
+		error_f("new_label malloc", 0);
+	label->point = point;
+	return (label);
 }
 
-void	print_hex(t_asm *sasm)
+t_list	*process_labels(t_asm *sasm, t_list *tokens)
 {
-	int	i = 0;
+	t_token	*token;
+	t_label	*label;
 
-	while (i != sasm->code_size)
-	{
-		ft_printf("%x ", sasm->code[i]);
-		if (i % 50 == 0)
-			ft_printf("\n");
-		i++;
-	}
+	token = tokens->content;
+	label = new_label(token->content, sasm->i);
+	if (!ft_lst_pb(&(sasm->labels), label, sizeof(t_label)))
+		error_f("procces_labels ft_lst_pb", 0);
+	return (tokens->next);
 }
 
 void	convert_tokens(t_asm *sasm, t_list *tokens)
@@ -210,12 +264,6 @@ void	convert_tokens(t_asm *sasm, t_list *tokens)
 	tokens = skip_name_and_comment(tokens);
 	while (tokens->next)
 	{
-		if (sasm->i > 600)
-		{
-			print_hex(sasm);
-			free_asm(sasm);
-			exit(0);
-		}
 		check_code_size(sasm);
 		if (token_type(tokens) == NEW_LINE)
 			tokens = tokens->next;
@@ -226,5 +274,5 @@ void	convert_tokens(t_asm *sasm, t_list *tokens)
 		else
 			error_f("Unknown token", 0);//todo row index in error
 	}
-	print_hex(sasm);
+	sasm->code[sasm->i] = 0;
 }

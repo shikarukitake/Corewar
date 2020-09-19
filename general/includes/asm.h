@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/18 20:24:16 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/19 16:09:44 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ typedef struct	s_asm
 	char				**dline;
 	char				**file;
 	long				code_size;
+	int					curr_start;
+	t_list				*labels;
+	t_list				*ref_labels;
 }				t_asm;
 
 /*
@@ -93,6 +96,22 @@ typedef struct	s_token
 	unsigned	row;
 }				t_token;
 
+typedef struct	s_label
+{
+	char		*name;
+	int			point;
+}				t_label;
+
+typedef struct	s_ref_label
+{
+	char		*name;
+	int			start;
+	int			end;
+	t_ctype		type;
+	int			comm_start;
+}				t_ref_label;
+
+
 /*
 ** service functions
 */
@@ -109,7 +128,7 @@ void			read_file(t_asm *sasm, char *file);
 ** write_file
 */
 
-void			write_file(t_asm *sasm);
+void write_file(t_asm *sasm, char *name);
 
 /*
 ** process_file parsing

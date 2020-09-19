@@ -43,17 +43,55 @@ void	check_end(t_asm *sasm)
 		error_f("No new_line at the end of file", 0);
 }
 
+
+int find_label(void *content, void *find_content)
+{
+	t_label	*first;
+	char	*second;
+
+	first = content;
+	second = find_content;
+	if (!ft_strcmp(first->name, second))
+		return (1);
+	else
+		return (0);
+}
+
+void	convert_labels(t_list *list, void *sas)
+{
+	t_asm		*sasm;
+	t_ref_label	*ref_label;
+	unsigned	code;
+	t_label		*label;
+	int			j;
+	t_list		*finded;
+
+	ref_label = list->content;
+	sasm = sas;
+	finded = ft_lstfind(sasm->labels, &find_label, ref_label->name);
+	if (!finded)
+		error_f("Can't find reference to token", 0);//todo what token is it?
+	label = finded->content;
+	code = ref_label->type == INDIRECT_LABEL ? (label->point - ref_label->comm_start) % IDX_MOD
+			: label->point - ref_label->comm_start;
+	j = ref_label->start;
+	while (j != ref_label->end)
+	{
+		sasm->code[j] = code >> (8 * (ref_label->end - 1 - j));
+		j++;
+	}
+}
+
 void	process_file(t_asm *sasm)
 {
-	print_file(sasm);
+//	print_file(sasm);
 	parse_tokens(sasm);
 	check_end(sasm);
 	add_token(sasm, init_token(sasm, END));
-	ft_lstiter_n(sasm->tokens, &print_token);
+//	ft_lstiter_n(sasm->tokens, &print_token);
 	ft_lstiter_ext_n(sasm->tokens, sasm, &find_name_and_comment);
 	if ((!sasm->prog_name[0] || !sasm->comment[0]))
 		error_f("There is no name or comment", 0);
-
 	convert_tokens(sasm, sasm->tokens);
-
+	ft_lstiter_ext(sasm->ref_labels, sasm, &convert_labels);
 }
