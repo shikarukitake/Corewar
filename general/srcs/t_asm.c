@@ -18,8 +18,8 @@ t_asm	*init_asm(void)
 		sasm->row = -1;
 		sasm->line = NULL;
 		sasm->dline = NULL;
-		sasm->prog_name[0] = 0;
-		sasm->comment[0] = 0;
+		ft_bzero(sasm->prog_name, PROG_NAME_LENGTH + 1);
+		ft_bzero(sasm->comment, COMMENT_LENGTH + 1);
 		sasm->labels = NULL;
 		sasm->ref_labels = NULL;
 	}

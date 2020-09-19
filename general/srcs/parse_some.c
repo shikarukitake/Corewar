@@ -6,6 +6,8 @@ void	parse_chars_type(t_asm *sasm, char *row, t_ctype type)
 
 	token = init_token(sasm, type);
 	token->content = ft_strsub(row, sasm->start, sasm->i - sasm->start);
+	if (type == DIRECT && !ft_strisonlydigit(token->content))
+		error_f("DIRECT token have wrong characters", 0);//todo row index
 	if (token->content == NULL)
 		error_f("ft_strsub malloc", 0);
 	add_token(sasm, token);

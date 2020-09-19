@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:28:08 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/15 12:05:14 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/19 21:32:26 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_command(t_asm *sasm, char *row)
 	start = ++(sasm->i);
 	while (row[sasm->i] && ft_strchr(LABEL_CHARS, row[sasm->i]))
 		sasm->i++;
-	if ((sasm->i - start) && is_whitespace(row[sasm->i]))
+	if ((sasm->i - start) && (is_whitespace(row[sasm->i]) || row[sasm->i] == '"'))
 	{
 		token->content = ft_strsub(row, start, sasm->i - start);
 		if (token->content == NULL)
@@ -41,7 +41,7 @@ void fill_token_content(const t_asm *sasm, const char *row, int start, t_token *
 		error_f("ft_strsub malloc", 0);
 	if (token->content)
 	{
-		if (!ft_strjoin_free(token->content, temp, 0))
+		if (!((token->content = ft_strjoin_free(token->content, temp, 0))))
 			error_f("ft_strjoin malloc", 0);
 	}
 	else

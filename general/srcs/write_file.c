@@ -22,6 +22,45 @@ char	*get_new_name(char *name)
 	return (new_name);
 }
 
+void	write_null(int fd)
+{
+	int		i;
+
+	i = 0;
+	while (i != 4)
+	{
+		ft_putchar_fd(0, fd);
+		i++;
+	}
+}
+
+void	write_exec_code_size(int fd, t_asm *sasm)
+{
+	unsigned	code;
+	int			size;
+
+	code = sasm->i;
+	size = 4;
+	while (size != 0)
+	{
+		ft_putchar_fd(code >> (8 * (size - 1)), fd);
+		size--;
+	}
+}
+
+void	write_all(int fd, t_asm *sasm)
+{
+	ft_putchar_fd(0, fd);
+	ft_putchar_fd(234, fd);
+	ft_putchar_fd(131, fd);
+	ft_putchar_fd(243, fd);
+	write(fd, sasm->prog_name, PROG_NAME_LENGTH);
+	write_null(fd);
+	write_exec_code_size(fd, sasm);
+	write(fd, sasm->comment, COMMENT_LENGTH);
+	write_null(fd);
+}
+
 void	write_file(t_asm *sasm, char *name)
 {
 	int		i;
@@ -37,6 +76,7 @@ void	write_file(t_asm *sasm, char *name)
 		free(new_name);
 		error_f("Can't open file to writing", 0);
 	}
+	write_all(fd, sasm);
 	write(fd, sasm->code, sasm->i);
 	close(fd);
 	ft_printf("Writing output program to ");

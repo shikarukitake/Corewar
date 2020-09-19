@@ -38,7 +38,7 @@
 typedef struct	s_asm
 {
 	int					fd;
-	int					i;
+	unsigned			i;
 	int					row;
 	int					start;
 	t_list				*tokens;
