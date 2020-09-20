@@ -18,6 +18,7 @@ SR_LI_1 =	convert_tokens.c \
             service.c \
             t_asm.c \
             write_file.c \
+            special_atoi.c \
 
 
 SOURCES_DIR = ./general/srcs/

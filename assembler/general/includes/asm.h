@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/19 16:09:44 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/20 15:53:56 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "libft.h"
 # include "op.h"
 # include "fcntl.h"
-# define USAGE "Usage: ./asm file.s\n"
+# define USAGE "Usage: ./asm file.s"
 # define COLOR_RED              "\x1b[31m"
 # define COLOR_GREEN    "\x1b[32m"
 # define COLOR_YELLOW   "\x1b[33m"
@@ -52,6 +52,8 @@ typedef struct	s_asm
 	char				**file;
 	long				code_size;
 	int					curr_start;
+	char				prog_name_e;
+	char				comment_e;
 	t_list				*labels;
 	t_list				*ref_labels;
 }				t_asm;
@@ -172,7 +174,7 @@ void			add_token(t_asm *sasm, t_token	*token);
 */
 
 int				nget_next_line(const int fd, char **line);
-
+int32_t			ft_atoi32(const char *str);
 
 void			print_token(t_list *list);
 

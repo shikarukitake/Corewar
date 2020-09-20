@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:45 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 12:37:45 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/20 16:21:06 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@ char	*get_new_name(char *name)
 	char	*new_name;
 	int		i;
 
-	i = 0;
+	i = ft_strlen(name);
 	while (name[i] != '.')
-		i++;
+		i--;
 	new_name = malloc(sizeof(char) * (i + 5));
 	if (new_name == NULL)
 		error_f("get_new_name malloc", 0);
-	i = 0;
-	while (name[i] != '.')
+	new_name[i--] = 0;
+	while (i >= 0)
 	{
 		new_name[i] = name[i];
-		i++;
+		i--;
 	}
-	new_name[i] = 0;
 	ft_strcat(new_name, ".cor");
 	return (new_name);
 }

@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void get_content(t_token *token, int name_or_comment, char *name)
+char	get_content(t_token *token, int name_or_comment, char *name)
 {
 	int		i;
 	size_t	len;
@@ -30,9 +30,11 @@ void get_content(t_token *token, int name_or_comment, char *name)
 			name[i] = token->content[i];
 			i++;
 		}
+		return (1);
 	}
 	else
 		error_f("There is no string token after name or comment", 0);
+	return (0);
 }
 
 void	find_name_and_comment(t_list *list, void *stuff)
@@ -44,17 +46,17 @@ void	find_name_and_comment(t_list *list, void *stuff)
 	token = list->content;
 	if (token->type == COMMAND)
 	{
-		if (!ft_strcmp(token->content, "name") && !sasm->prog_name[0])
+		if (!ft_strcmp(token->content, "name") && !sasm->prog_name_e)
 		{
 			if (list->next)
-				get_content(list->next->content, 0, sasm->prog_name);
+				sasm->prog_name_e = get_content(list->next->content, 0, sasm->prog_name);
 			else
 				error_f("There is no content for name token", 0);//todo row and i complete
 		}
-		else if (!ft_strcmp(token->content, "comment") && !sasm->comment[0])
+		else if (!ft_strcmp(token->content, "comment") && !sasm->comment_e)
 		{
 			if (list->next)
-				get_content(list->next->content,1, sasm->comment);
+				sasm->comment_e = get_content(list->next->content, 1, sasm->comment);
 			else
 				error_f("There is no content for comment token", 0);//todo row and i complete
 		}

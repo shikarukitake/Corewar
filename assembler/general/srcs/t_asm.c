@@ -34,6 +34,8 @@ t_asm	*init_asm(void)
 		ft_bzero(sasm->comment, COMMENT_LENGTH + 1);
 		sasm->labels = NULL;
 		sasm->ref_labels = NULL;
+		sasm->comment_e = 0;
+		sasm->prog_name_e = 0;
 	}
 	return (sasm);
 }

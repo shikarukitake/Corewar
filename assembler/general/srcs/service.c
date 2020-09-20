@@ -35,6 +35,7 @@ void	write_col_row(t_asm *sasm, char const *error)
 	write(2, row, ft_strlen(row));
 	write(2, "\nCOL:", 5);
 	write(2, col, ft_strlen(col));
+	write(2, "\n", 1);
 	free(row);
 	free(col);
 	free_asm(sasm);

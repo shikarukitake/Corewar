@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:12 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 12:50:57 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/20 13:46:46 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	process_file(t_asm *sasm)
 	add_token(sasm, init_token(sasm, END));
 //	ft_lstiter_n(sasm->tokens, &print_token);
 	ft_lstiter_ext_n(sasm->tokens, sasm, &find_name_and_comment);
-	if ((!sasm->prog_name[0] || !sasm->comment[0]))
+	if ((!sasm->prog_name_e || !sasm->comment_e))
 		error_f("There is no name or comment", 0);
 	convert_tokens(sasm, sasm->tokens);
 	if (sasm->i == 0)

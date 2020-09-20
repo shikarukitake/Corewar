@@ -6,7 +6,7 @@
 /*   By: sdagger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 19:49:40 by sdagger           #+#    #+#             */
-/*   Updated: 2020/08/03 17:54:24 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/20 14:19:13 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static long			make_int_l(const char *str, long long q, int i, int neg)
 		j++;
 	}
 	if (j >= 14)
-		return (2147483650);
+		return (4294967295);
 	else
 		return (q * neg);
 	return (q);

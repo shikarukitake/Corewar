@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:36:18 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 12:36:18 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/20 14:19:47 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,9 +157,7 @@ void	procces_dir(t_asm *sasm, t_token *token, int dir_size)
 	}
 	else if (token->type == DIRECT)
 	{
-		code = ft_atoi_l(token->content);//todo check
-		if (ft_atoi_l(token->content) > FT_INT_MAX)
-			error_f("wrong DIRECT content", 0);//todo check
+		code = ft_atoi32(token->content);//todo check
 		while (dir_size != 0)
 		{
 			sasm->code[sasm->i++] = code >> (8 * (dir_size - 1));
@@ -183,9 +181,7 @@ void	procces_ind(t_asm *sasm, t_token *token)
 	}
 	else
 	{
-		code = ft_atoi_l(token->content);//todo check
-		if (ft_atoi_l(token->content) > FT_INT_MAX)
-			error_f("wrong DIRECT content", 0);//todo check
+		code = ft_atoi32(token->content);//todo check
 		sasm->code[sasm->i++] = code >> 8;
 		sasm->code[sasm->i++] = code;
 	}
@@ -220,6 +216,8 @@ t_list		*procces_operator(t_asm *sasm, t_list *tokens)
 	i = 0;
 	while (i != op.count_arg)
 	{
+		if ((arg_type(tokens) & op.type[i]) == 0)
+			error_f("Wrong arguments for token", 0);//todo name of token in error
 		process_args(sasm, tokens, op.dir_size);
 		tokens = select_next_token(tokens, &op, i);
 		i++;
@@ -229,7 +227,7 @@ t_list		*procces_operator(t_asm *sasm, t_list *tokens)
 
 void	check_code_size(t_asm *sasm)
 {
-	if ((sasm->i + 14) >= CHAMP_MAX_SIZE)
+	if ((sasm->i + 14) >= sasm->code_size)
 	{
 		sasm->code_size *= 2;
 		sasm->code = realloc((void*)sasm->code, sizeof(char) * (sasm->code_size + 1));
