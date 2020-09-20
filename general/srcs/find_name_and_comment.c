@@ -1,18 +1,31 @@
-#include "asm.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_name_and_comment.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/20 12:36:46 by sdagger           #+#    #+#             */
+/*   Updated: 2020/09/20 13:02:06 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "asm.h"
 
 void get_content(t_token *token, int name_or_comment, char *name)
 {
 	int		i;
-	int		len;
+	size_t	len;
 
 	len = name_or_comment == 0 ? PROG_NAME_LENGTH : COMMENT_LENGTH;
+	if (ft_strlen(token->content) > len)
+		error_f("Wrong lenght of name or comment", 0);
 	i = 0;
 	if (token->type == STRING)
 	{
 		while (token->content[i])
 		{
-			if (i > len)
+			if ((size_t)i > len)
 				error_f("Wrong lenght of name or comment", 0);
 			name[i] = token->content[i];
 			i++;

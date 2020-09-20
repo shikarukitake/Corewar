@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_file.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/20 12:37:12 by sdagger           #+#    #+#             */
+/*   Updated: 2020/09/20 12:50:57 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 void	print_file(t_asm *sasm)//todo service function delete
@@ -93,5 +105,7 @@ void	process_file(t_asm *sasm)
 	if ((!sasm->prog_name[0] || !sasm->comment[0]))
 		error_f("There is no name or comment", 0);
 	convert_tokens(sasm, sasm->tokens);
+	if (sasm->i == 0)
+		error_f("There is no code", 0);//todo check
 	ft_lstiter_ext(sasm->ref_labels, sasm, &convert_labels);
 }

@@ -14,7 +14,7 @@
 
 int		only_digit(t_asm *sasm, char *row)
 {
-	int		i;
+	unsigned		i;
 
 	i = sasm->start;
 	while (i != sasm->i)

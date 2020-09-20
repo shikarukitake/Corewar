@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   special_gnl.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/20 12:37:32 by sdagger           #+#    #+#             */
+/*   Updated: 2020/09/20 12:37:32 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <limits.h>
 
@@ -11,7 +23,7 @@ static int	ft_line_maker(const int fd, char **help, char **line)
 		len++;
 	if (help[fd][len] == '\n')
 	{
-		*line = ft_strsub(help[fd], 0, len + 1);
+		*line = ft_strsub(help[fd], 0, len + 1);//todo if can't malloc
 		iter = ft_strsub(help[fd], len + 1, ft_strlen(help[fd]) - len);
 		free(help[fd]);
 		help[fd] = ft_strdup(iter);

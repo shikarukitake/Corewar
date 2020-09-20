@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:28:08 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/19 21:32:26 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/20 12:32:36 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	parse_string(t_asm *sasm, char *row)
 {
 	int		start;
 	t_token	*token;
-	char	*temp;
 
 	start = ++(sasm->i);
 	token = init_token(sasm, STRING);
@@ -67,7 +66,8 @@ void	parse_string(t_asm *sasm, char *row)
 			sasm->i = 0;
 			start = sasm->i;
 		}
-		sasm->i++;
+		else
+			sasm->i++;
 	}
 	fill_token_content(sasm, row, start, token);
 	add_token(sasm, token);

@@ -6,7 +6,7 @@
 #    By: sdagger <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/25 14:21:49 by sdagger           #+#    #+#              #
-#    Updated: 2020/08/05 17:24:15 by sdagger          ###   ########.fr        #
+#    Updated: 2020/09/18 16:56:32 by sdagger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,48 +16,48 @@ LIBFT_DIR = libft
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -O3 -g
+CFLAGS = -Wall -Wextra -Werror -O3
 
-SRC = exp_util.c            \
-      color_util.c          \
-      flags_parser.c        \
-      float_util.c          \
-      ft_ldtoa.c            \
-      ft_printf.c           \
-      ft_putwchar.c         \
-      get_digit.c           \
-      get_float.c           \
-      get_float_part.c      \
-      get_int_part.c        \
-      long_arithmetic.c     \
-      precision_parser.c    \
-      print_basic.c         \
-      print_char.c          \
-      print_d_buf.c         \
-      print_digit_buf.c     \
-      print_e_buf.c         \
-      print_f_buf.c         \
-      print_float.c         \
-      print_hex.c           \
-      print_oct.c           \
-      print_other.c         \
-      print_sd_buf.c        \
-      print_str.c           \
-      print_ud.c            \
-      print_util.c          \
-      print_ws.c            \
-      printf_constants.c    \
-      round_float.c         \
-      size_parser.c         \
-      spec_format_parser.c  \
-      spec_util.c           \
-      special_float_values.c \
-      specificator.c        \
-      type_func_table.c     \
-      type_parser.c         \
-      util.c                \
-      width_parser.c        \
-      ft_str_find.c \
+SRC =	exp_util.c            \
+		color_util.c          \
+		flags_parser.c        \
+		float_util.c          \
+		ft_ldtoa.c            \
+		ft_printf.c           \
+		ft_putwchar.c         \
+		get_digit.c           \
+		get_float.c           \
+		get_float_part.c      \
+		get_int_part.c        \
+		long_arithmetic.c     \
+		precision_parser.c    \
+		print_basic.c         \
+		print_char.c          \
+		print_d_buf.c         \
+		print_digit_buf.c     \
+		print_e_buf.c         \
+		print_f_buf.c         \
+		print_float.c         \
+		print_hex.c           \
+		print_oct.c           \
+		print_other.c         \
+		print_sd_buf.c        \
+		print_str.c           \
+		print_ud.c            \
+		print_util.c          \
+		print_ws.c            \
+		printf_constants.c    \
+		round_float.c         \
+		size_parser.c         \
+		spec_format_parser.c  \
+		spec_util.c           \
+		special_float_values.c \
+		specificator.c        \
+		type_func_table.c     \
+		type_parser.c         \
+		util.c                \
+		width_parser.c        \
+		ft_str_find.c \
 		ft_min.c \
 		ft_max.c \
 		ft_strdup.c \
@@ -155,6 +155,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
+	@echo "\x1b[32mlibftprintf compiled\x1b[0m"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(INC) -c -o $@ $<

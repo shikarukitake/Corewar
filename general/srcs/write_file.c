@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/20 12:37:45 by sdagger           #+#    #+#             */
+/*   Updated: 2020/09/20 12:37:45 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 char	*get_new_name(char *name)
@@ -51,9 +63,9 @@ void	write_exec_code_size(int fd, t_asm *sasm)
 void	write_all(int fd, t_asm *sasm)
 {
 	ft_putchar_fd(0, fd);
-	ft_putchar_fd(234, fd);
-	ft_putchar_fd(131, fd);
-	ft_putchar_fd(243, fd);
+	ft_putchar_fd((char)234, fd);
+	ft_putchar_fd((char)131, fd);
+	ft_putchar_fd((char)243, fd);
 	write(fd, sasm->prog_name, PROG_NAME_LENGTH);
 	write_null(fd);
 	write_exec_code_size(fd, sasm);

@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/20 12:36:51 by sdagger           #+#    #+#             */
+/*   Updated: 2020/09/20 12:36:51 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
-//todo find name and comment when string have new lines
+
 int		main(int ac, char **av)
 {
 	t_asm	*sasm;
@@ -11,7 +23,6 @@ int		main(int ac, char **av)
 	process_file(sasm);
 	write_file(sasm, av[1]);
 	free_asm(sasm);
-//	ft_printf(COLOR_PINK "programm end\n" COLOR_RESET);
 	exit(0);
 	return (0);
 }
