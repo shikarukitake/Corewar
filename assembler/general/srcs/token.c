@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:18:06 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:35:21 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:40:38 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_token		*init_token(t_asm *sasm, t_ctype type)
 	return (token);
 }
 
-void		add_token(t_asm *sasm, t_token	*token)
+void		add_token(t_asm *sasm, t_token *token)
 {
 	if (!ft_lst_pb(&(sasm->tokens), token, sizeof(t_token)))
 		error_f("ft_lst_pb malloc", 0);

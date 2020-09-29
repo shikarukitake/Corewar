@@ -6,27 +6,15 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:12 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:32:47 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:49:43 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	print_file(t_asm *sasm)//todo service function delete
-{
-	int	i = 0;
-	while (sasm->file[i])
-	{
-		ft_printf("%s", sasm->file[i]);
-		i++;
-	}
-}
-
-
 void	parse_tokens(t_asm *sasm)
 {
 	sasm->row = 0;
-
 	while (sasm->file[sasm->row])
 	{
 		sasm->i = 0;
@@ -38,11 +26,10 @@ void	parse_tokens(t_asm *sasm)
 				parse_token(sasm, sasm->file[sasm->row]);
 		}
 		if (!(sasm->file[sasm->row]))
-			break;
+			break ;
 		sasm->row++;
 	}
 }
-
 
 void	check_end(t_asm *sasm)
 {
@@ -55,8 +42,7 @@ void	check_end(t_asm *sasm)
 		error_f("No new_line at the end of file", 0);
 }
 
-
-int find_label(void *content, void *find_content)
+int		find_label(void *content, void *find_content)
 {
 	t_label	*first;
 	char	*second;
@@ -75,36 +61,33 @@ void	convert_labels(t_list *list, void *sas)
 	t_ref_label	*ref_label;
 	unsigned	code;
 	t_label		*label;
-	unsigned	j;
 	t_list		*finded;
 
 	ref_label = list->content;
 	sasm = sas;
 	finded = ft_lstfind(sasm->labels, &find_label, ref_label->name);
 	if (!finded)
-		error_f("Can't find reference to token", 0);//todo what token is it?
+		error_token("Can't find reference to token", 0);
 	label = finded->content;
 	code = label->point - ref_label->comm_start;
-	j = ref_label->start;
-	while (j != ref_label->end)
+	while (ref_label->start != ref_label->end)
 	{
-		sasm->code[j] = code >> (8 * (ref_label->end - 1 - j));
-		j++;
+		sasm->code[ref_label->start] = code >>
+		(8 * (ref_label->end - 1 - ref_label->start));
+		ref_label->start++;
 	}
 }
 
 void	process_file(t_asm *sasm)
 {
-//	print_file(sasm);
 	parse_tokens(sasm);
 	check_end(sasm);
 	add_token(sasm, init_token(sasm, END));
-//	ft_lstiter_n(sasm->tokens, &print_token);
 	ft_lstiter_ext_n(sasm->tokens, sasm, &find_name_and_comment);
 	if ((!sasm->prog_name_e || !sasm->comment_e))
 		error_f("There is no name or comment", 0);
 	convert_tokens(sasm, sasm->tokens);
 	if (sasm->i == 0)
-		error_f("There is no code", 0);//todo check
+		error_f("There is no code", 0);
 	ft_lstiter_ext(sasm->ref_labels, sasm, &convert_labels);
 }

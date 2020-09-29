@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:31:22 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 15:53:56 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 17:08:59 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define C_REG 1
 # define C_DIR 2
 # define C_IND 3
+
 /*
 ** t_asm structure
 ** fd - file descriptor
@@ -70,7 +71,7 @@ void			free_asm(t_asm *sasm);
 ** There are enum for possible types to tokens
 */
 
-typedef			enum
+typedef enum
 {
 	OPERATOR,
 	COMMAND,
@@ -84,7 +85,7 @@ typedef			enum
 	INDIRECT_LABEL,
 	NEW_LINE,
 	END
-}				t_ctype;
+}	t_ctype;
 
 /*
 ** t_token structure
@@ -113,12 +114,13 @@ typedef struct	s_ref_label
 	unsigned	comm_start;
 }				t_ref_label;
 
-
 /*
 ** service functions
 */
 
 t_asm			*error_f(char *error, char init);
+void			error_token(char *error, t_token *token);
+t_label			*new_label(char *name, int point);
 
 /*
 ** read_file
@@ -130,7 +132,7 @@ void			read_file(t_asm *sasm, char *file);
 ** write_file
 */
 
-void write_file(t_asm *sasm, char *name);
+void			write_file(t_asm *sasm, char *name);
 
 /*
 ** process_file parsing
@@ -147,6 +149,9 @@ void			parse_label(t_asm *sasm, char *row);
 void			parse_newline(t_asm *sasm);
 void			parse_separator(t_asm *sasm);
 void			parse_token(t_asm *sasm, char *row);
+void			parse_chars_type(t_asm *sasm, char *row, t_ctype type);
+void			parse_chars(t_asm *sasm, char *row);
+void			parse_direct(t_asm *sasm, char *row);
 
 /*
 ** process_file_extra (some service function)
@@ -156,11 +161,36 @@ int				only_digit(t_asm *sasm, char *row);
 int				is_register(t_asm *sasm, char *row);
 
 /*
-** process_file checking
+** process_file checking and converting
 */
 
 void			find_name_and_comment(t_list *list, void *stuff);
+t_list			*skip_name_and_comment(t_list *tokens);
+t_op			get_op(t_list *tokens);
 void			convert_tokens(t_asm *sasm, t_list *tokens);
+void			procces_register(t_asm *sasm, t_token *token);
+void			process_dir_label(t_asm *sasm,
+				const t_token *token, int dir_size);
+void			procces_dir(t_asm *sasm, t_token *token, int dir_size);
+void			procces_ind(t_asm *sasm, t_token *token);
+void			process_args(t_asm *sasm, t_list *tokens, int dir_size);
+
+/*
+** some functions to get new struct
+*/
+t_label			*new_label(char *name, int point);
+t_ref_label		*new_ref(char *name, unsigned start_end[2],
+				unsigned comm_start, t_ctype type);
+
+/*
+** get type (detection type of token) functions
+*/
+
+t_ctype			token_type(t_list *tokens);
+unsigned char	arg_type(t_list *tokens);
+unsigned char	arg_type_code(t_list *tokens);
+unsigned char	get_type_code(t_list *tokens, t_op *op, int i);
+t_list			*select_next_token(t_list *tokens, const t_op *op, int i);
 
 /*
 ** t_token

@@ -6,19 +6,31 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:25 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 12:37:25 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:32:49 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	write_colrow(const char *error, const char *row, const char *col)
+{
+	write(2, "ERROR\n", 6);
+	if (error)
+		write(2, error, ft_strlen(error));
+	write(2, "\nROW:", 5);
+	write(2, row, ft_strlen(row));
+	write(2, "\nCOL:", 5);
+	write(2, col, ft_strlen(col));
+	write(2, "\n", 1);
+}
 
 void	write_col_row(t_asm *sasm, char const *error)
 {
 	char	*row;
 	char	*col;
 
-	row = ft_itoa(sasm->row);
-	col = ft_itoa(sasm->i);
+	row = ft_itoa(sasm->row + 1);
+	col = ft_itoa(sasm->i + 1);
 	if (!row || !col)
 	{
 		free_asm(sasm);
@@ -28,14 +40,7 @@ void	write_col_row(t_asm *sasm, char const *error)
 			free(col);
 		ft_error_t("malloc when showing error");
 	}
-	write(2, "ERROR\n", 6);
-	if (error)
-		write(2, error, ft_strlen(error));
-	write(2, "\nROW:", 5);
-	write(2, row, ft_strlen(row));
-	write(2, "\nCOL:", 5);
-	write(2, col, ft_strlen(col));
-	write(2, "\n", 1);
+	write_colrow(error, row, col);
 	free(row);
 	free(col);
 	free_asm(sasm);
@@ -54,42 +59,29 @@ t_asm	*error_f(char *error, char init)
 	if (init == 2)
 		write_col_row(sasm, error);
 	free_asm(sasm);
-	ft_error_t(error);
+	if (init == 0)
+		ft_error_t(error);
 	return (NULL);
 }
 
-int		is_whitespace(int c)
+void	error_token(char *error, t_token *token)
 {
-	return (c == '\t' ||
-			c == '\v' ||
-			c == '\f' ||
-			c == '\r' ||
-			c == ' ');
-}
+	char	*row;
+	char	*col;
 
-int		is_delimiter(int c)
-{
-	return (c == '\0'
-			|| c == '\n'
-			|| is_whitespace(c)
-			|| c == COMMAND_CHAR
-			|| c == '\"'
-			|| c == DIRECT_CHAR
-			|| c == SEPARATOR_CHAR
-			|| c == COMMENT_CHAR
-			|| c == ALT_COMMENT_CHAR);
-}
-
-void	skip_whitespace(t_asm *sasm, char *row)
-{
-	while (is_whitespace(row[sasm->i]))
-		sasm->i++;
-}
-
-void	skip_comment(t_asm *sasm, char *row)
-{
-	if (row[sasm->i] == COMMENT_CHAR
-		|| row[sasm->i] == ALT_COMMENT_CHAR)
-		while (row[sasm->i] && row[sasm->i] != '\n')
-			sasm->i++;
+	row = ft_itoa(token->row + 1);
+	col = ft_itoa(token->i + 1);
+	if (!row || !col)
+	{
+		if (row)
+			free(row);
+		if (col)
+			free(col);
+		error_f("malloc when showing error", 0);
+	}
+	write_colrow(error, row, col);
+	free(row);
+	free(col);
+	error_f(NULL, -1);
+	exit(1);
 }

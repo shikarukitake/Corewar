@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:32 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:34:24 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 15:45:05 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <limits.h>
 #include "asm.h"
 
-void	ft_line_maker_part(char **help, char **line, size_t len)
+void		ft_line_maker_part(char **help, char **line, size_t len)
 {
 	char	*iter;
 
-	*line = ft_strsub(*help, 0, len + 1);//todo if can't malloc
+	*line = ft_strsub(*help, 0, len + 1);
 	if (*line == NULL)
 		error_f("gnl line_maker strsub", 0);
 	iter = ft_strsub(*help, len + 1, ft_strlen(*help) - len);

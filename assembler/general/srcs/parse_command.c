@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:28:08 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:30:43 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:51:56 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	parse_command(t_asm *sasm, char *row)
 	start = ++(sasm->i);
 	while (row[sasm->i] && ft_strchr(LABEL_CHARS, row[sasm->i]))
 		sasm->i++;
-	if ((sasm->i - start) && (is_whitespace(row[sasm->i]) || row[sasm->i] == '"'))
+	if ((sasm->i - start) &&
+	(is_whitespace(row[sasm->i]) || row[sasm->i] == '"'))
 	{
 		token->content = ft_strsub(row, start, sasm->i - start);
 		if (token->content == NULL)
@@ -36,7 +37,8 @@ void	parse_command(t_asm *sasm, char *row)
 	}
 }
 
-void fill_token_content(const t_asm *sasm, const char *row, int start, t_token *token)
+void	fill_token_content(const t_asm *sasm, const char *row,
+						int start, t_token *token)
 {
 	char	*temp;
 
@@ -50,9 +52,7 @@ void fill_token_content(const t_asm *sasm, const char *row, int start, t_token *
 	}
 	else
 		token->content = temp;
-
 }
-
 
 void	parse_string(t_asm *sasm, char *row)
 {

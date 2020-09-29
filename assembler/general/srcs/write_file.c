@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:45 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:35:41 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:40:38 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	write_file(t_asm *sasm, char *name)
 
 	i = 0;
 	new_name = get_new_name(name);
-
 	fd = open(new_name, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 	if (fd == -1)
 	{

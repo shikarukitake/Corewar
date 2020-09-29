@@ -6,13 +6,13 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:20 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 13:41:19 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 15:45:05 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	malloc_file(t_asm *sasm, char *file)//todo maybe don't int
+void	malloc_file(t_asm *sasm, char *file)
 {
 	int	i;
 
@@ -55,4 +55,4 @@ void	read_file(t_asm *sasm, char *file)
 	if (sasm->line)
 		free(sasm->line);
 	close(sasm->fd);
-}//todo get next line when in end of file new line without any characters
+}

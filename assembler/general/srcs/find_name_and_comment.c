@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:36:46 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:29:57 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:40:38 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ char	get_content(t_token *token, int name_or_comment, char *name)
 	return (0);
 }
 
+void	part_find_name(const t_list *list, t_asm *sasm)
+{
+	if (list->next)
+		sasm->prog_name_e = get_content(list->next->content,
+		0, sasm->prog_name);
+	else
+		error_f("There is no content for name token", 0);
+}
+
 void	find_name_and_comment(t_list *list, void *stuff)
 {
 	t_asm	*sasm;
@@ -47,20 +56,16 @@ void	find_name_and_comment(t_list *list, void *stuff)
 	if (token->type == COMMAND)
 	{
 		if (!ft_strcmp(token->content, "name") && !sasm->prog_name_e)
-		{
-			if (list->next)
-				sasm->prog_name_e = get_content(list->next->content, 0, sasm->prog_name);
-			else
-				error_f("There is no content for name token", 0);//todo row and i complete
-		}
+			part_find_name(list, sasm);
 		else if (!ft_strcmp(token->content, "comment") && !sasm->comment_e)
 		{
 			if (list->next)
-				sasm->comment_e = get_content(list->next->content, 1, sasm->comment);
+				sasm->comment_e = get_content(list->next->content,
+				1, sasm->comment);
 			else
-				error_f("There is no content for comment token", 0);//todo row and i complete
+				error_f("There is no content for comment token", 0);
 		}
 		else
-			error_f("Unknown command token", 0);//todo row and i complete
+			error_token("Unknown command token", token);
 	}
 }

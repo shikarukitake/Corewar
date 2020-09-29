@@ -10,7 +10,6 @@ SR_LI_1 =	convert_tokens.c \
 			read_file.c \
 			special_gnl.c \
 			token.c \
-			debug_only.c \
 			main.c \
 			parse_label.c \
 			parse_some.c \
@@ -19,6 +18,12 @@ SR_LI_1 =	convert_tokens.c \
 			t_asm.c \
 			write_file.c \
 			special_atoi.c \
+			get_type.c \
+			convert_tokens_part.c \
+			new_get.c \
+			parse_some_part.c \
+			procces_args.c \
+			skip_some.c \
 
 
 SOURCES_DIR = ./general/srcs/
