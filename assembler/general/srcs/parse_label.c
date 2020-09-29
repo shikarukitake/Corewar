@@ -6,13 +6,13 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 19:01:23 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:31:30 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:39:40 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parse_label(t_asm *sasm, char *row)//todo Remove skipping chars
+void	parse_label(t_asm *sasm, char *row)
 {
 	t_token	*token;
 

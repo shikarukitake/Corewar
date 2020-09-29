@@ -46,7 +46,7 @@ int			ft_get_next_line(const int fd, char **line)
 
 	if (fd < 0 || line == NULL)
 		return (-1);
-	while ((rdr = read(fd, buff, BUFF_SIZE + 1)) > 0)
+	while ((rdr = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[rdr] = '\0';
 		if (help[fd] == NULL)
