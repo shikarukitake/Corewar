@@ -6,7 +6,7 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:59:12 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/09/20 16:02:02 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/09/29 11:37:40 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_vm		*init_vm(void)
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->cycles_after_check = 0;
 	vm->checks_num = 0;
-	//vm->vs = NULL;
+	vm->vs = NULL;
 	vm->dump_cycle = -1;
 	vm->dump_print_mode = 0;
 	vm->show_cycle = -1;

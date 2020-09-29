@@ -6,7 +6,7 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:22:44 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/09/20 18:39:50 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/09/29 11:39:14 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ void		args_parce(int ac, char **av, t_vm *vi_ma)
 			parse_dump(&ac, &av, vi_ma);
 		else if (!ft_strcmp(*av, "-show") || !ft_strcmp(*av, "-s"))
 			parse_show(&ac, &av, vi_ma);
-		//else if (!ft_strcmp(*av, "-a"))
-		//	parse_aff_flag(&ac, &av, vi_ma);
+		else if (!ft_strcmp(*av, "-a"))
+			parse_aff_flag(&ac, &av, vi_ma);
 		else if (!ft_strcmp(*av, "-l"))
 			parse_log(&ac, &av, vi_ma);
 		else if (!ft_strcmp(*av, "-n") || is_champ(*av, ".cor"))
