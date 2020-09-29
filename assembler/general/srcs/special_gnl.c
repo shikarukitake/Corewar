@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:32 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 14:06:58 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 14:07:03 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <limits.h>
 #include "asm.h"
 
-void ft_line_maker_part(char **help, char **line, size_t len)
+void	ft_line_maker_part(char **help, char **line, size_t len)
 {
 	char	*iter;
 
