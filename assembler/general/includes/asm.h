@@ -51,7 +51,7 @@ typedef struct	s_asm
 	char				**dline;
 	char				**file;
 	long				code_size;
-	int					curr_start;
+	unsigned			curr_start;
 	char				prog_name_e;
 	char				comment_e;
 	t_list				*labels;
@@ -107,10 +107,10 @@ typedef struct	s_label
 typedef struct	s_ref_label
 {
 	char		*name;
-	int			start;
-	int			end;
+	unsigned	start;
+	unsigned	end;
 	t_ctype		type;
-	int			comm_start;
+	unsigned	comm_start;
 }				t_ref_label;
 
 

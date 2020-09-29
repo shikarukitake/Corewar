@@ -53,12 +53,14 @@ all: $(LIB_RULE) $(NAME_1)
 
 $(NAME_1): $(LIBFT) $(OBJECT_DIR_1) $(OBJ_LI_1)
 	@$(COMPILER) $(CFLAGS) $(IFLAGS) $(LIBFT) $(OBJ_LI_1) -o $(NAME_1)
-	@echo "\x1b[32masm compiled\x1b[0m"
+	@echo "\n\x1b[32masm compiled\x1b[0m"
+
 $(OBJECT_DIR_1):
 	@mkdir -p $(OBJECT_DIR_1)
 
 $(OBJECT_DIR_1)%.o : $(SOURCES_DIR)%.c $(HEADERS)
 	@$(COMPILER) $(CFLAGS) -c $(IFLAGS) $< -o $@
+	@echo "\x1b[32m.\x1b[0m\c"
 
 $(LIBFT):
 	@make -C $(LIB_DIR)

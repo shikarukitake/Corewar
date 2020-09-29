@@ -6,7 +6,7 @@
 #    By: sdagger <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/25 14:21:49 by sdagger           #+#    #+#              #
-#    Updated: 2020/09/18 16:56:32 by sdagger          ###   ########.fr        #
+#    Updated: 2020/09/27 16:51:51 by sdagger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,10 +155,11 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
-	@echo "\x1b[32mlibftprintf compiled\x1b[0m"
+	@echo "\n\x1b[32mlibftprintf compiled\x1b[0m"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(INC) -c -o $@ $<
+	@echo "\x1b[32m.\x1b[0m\c"
 
 clean:
 	@rm -f $(OBJ)

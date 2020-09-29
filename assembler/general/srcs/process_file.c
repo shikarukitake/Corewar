@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:12 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 13:46:46 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/27 20:03:39 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	convert_labels(t_list *list, void *sas)
 	t_ref_label	*ref_label;
 	unsigned	code;
 	t_label		*label;
-	int			j;
+	unsigned	j;
 	t_list		*finded;
 
 	ref_label = list->content;
@@ -84,7 +84,10 @@ void	convert_labels(t_list *list, void *sas)
 	if (!finded)
 		error_f("Can't find reference to token", 0);//todo what token is it?
 	label = finded->content;
-	code = ref_label->type == INDIRECT_LABEL ? (label->point - ref_label->comm_start) % IDX_MOD
+//	ft_printf("%s\n", ref_label->name);
+//	ft_printf("%d % IDX_MOD(%d) = %d\n", label->point - ref_label->comm_start, IDX_MOD, (label->point - ref_label->comm_start) % IDX_MOD);
+//	ft_printf("%d\n", (label->point - ref_label->comm_start) % IDX_MOD);
+	code = ref_label->type == INDIRECT_LABEL ? (label->point - ref_label->comm_start)
 			: label->point - ref_label->comm_start;
 	j = ref_label->start;
 	while (j != ref_label->end)

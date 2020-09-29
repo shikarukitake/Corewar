@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:36:18 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 14:19:47 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/27 17:22:19 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	procces_register(t_asm *sasm, t_token *token)
 	sasm->code[sasm->i++] = ft_atoi(token->content + 1);
 }
 
-t_ref_label	*new_ref(char *name, int start, int end, int comm_start, t_ctype type)
+t_ref_label	*new_ref(char *name, unsigned start_end[2], unsigned comm_start, t_ctype type)
 {
 	t_ref_label		*ref;
 
@@ -134,19 +134,22 @@ t_ref_label	*new_ref(char *name, int start, int end, int comm_start, t_ctype typ
 		error_f("new_ref malloc", 0);
 	ref->comm_start = comm_start;
 	ref->type = type;
-	ref->start = start;
-	ref->end = end;
+	ref->start = start_end[0];
+	ref->end = start_end[1];
 	return (ref);
 }
 
 void	procces_dir(t_asm *sasm, t_token *token, int dir_size)
 {
 	unsigned int	code;
+	unsigned int	start_end[2];
 
 	if (token->type == DIRECT_LABEL)
 	{
-		if (!ft_lst_pb(&(sasm->ref_labels), new_ref(token->content, sasm->i,
-		sasm->i + dir_size, sasm->curr_start, token->type), sizeof(t_ref_label)))
+		start_end[0] = sasm->i;
+		start_end[1] = sasm->i + dir_size;
+		if (!ft_lst_pb(&(sasm->ref_labels), new_ref(token->content, start_end,
+			sasm->curr_start, token->type), sizeof(t_ref_label)))
 			error_f("proccess_dir lst malloc", 0);
 		code = 0;
 		while (dir_size != 0)
@@ -169,11 +172,14 @@ void	procces_dir(t_asm *sasm, t_token *token, int dir_size)
 void	procces_ind(t_asm *sasm, t_token *token)
 {
 	unsigned int	code;
+	unsigned int	start_end[2];
 
 	if (token->type == INDIRECT_LABEL)
 	{
-		if (!ft_lst_pb(&(sasm->ref_labels), new_ref(token->content, sasm->curr_start,
-		sasm->i + 2, sasm->i, token->type), sizeof(t_ref_label)))
+		start_end[0] = sasm->i;
+		start_end[1] = sasm->i + 2;
+		if (!ft_lst_pb(&(sasm->ref_labels), new_ref(token->content, start_end,
+			sasm->curr_start, token->type), sizeof(t_ref_label)))//todo check
 			error_f("proccess_dir lst malloc", 0);
 		code = 0;
 		sasm->code[sasm->i++] = code >> 8;
