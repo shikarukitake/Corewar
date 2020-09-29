@@ -52,5 +52,7 @@ void	read_file(t_asm *sasm, char *file)
 		sasm->line = NULL;
 		i++;
 	}
+	if (sasm->line)
+		free(sasm->line);
 	close(sasm->fd);
 }//todo get next line when in end of file new line without any characters
