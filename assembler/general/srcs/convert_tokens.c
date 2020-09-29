@@ -6,13 +6,13 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:36:18 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/27 17:22:19 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 15:25:17 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_list	*skip_name_and_comment(t_list *tokens)
+t_list			*skip_name_and_comment(t_list *tokens)
 {
 	while (((t_token*)(tokens->content))->type == NEW_LINE)
 		tokens = tokens->next;
@@ -31,7 +31,7 @@ t_list	*skip_name_and_comment(t_list *tokens)
 	return (tokens->next);
 }
 
-t_ctype	token_type(t_list *tokens)
+t_ctype			token_type(t_list *tokens)
 {
 	return (((t_token*)(tokens->content))->type);
 }
@@ -42,7 +42,7 @@ unsigned char	arg_type(t_list *tokens)
 		token_type(tokens) == DIRECT_LABEL)
 		return (T_DIR);
 	else if (token_type(tokens) == INDIRECT ||
-			 token_type(tokens) == INDIRECT_LABEL)
+			token_type(tokens) == INDIRECT_LABEL)
 		return (T_IND);
 	else if (token_type(tokens) == REGISTER)
 		return (T_REG);
@@ -64,7 +64,7 @@ unsigned char	arg_type_code(t_list *tokens)
 		return (0);
 }
 
-t_op		get_op(t_list *tokens)
+t_op			get_op(t_list *tokens)
 {
 	int		len;
 	int		i;
@@ -82,7 +82,7 @@ t_op		get_op(t_list *tokens)
 	return (op_tab[16]);
 }
 
-t_list *select_next_token(t_list *tokens, const t_op *op, int i)
+t_list			*select_next_token(t_list *tokens, const t_op *op, int i)
 {
 	if (i + 1 != op->count_arg)
 	{
@@ -117,12 +117,12 @@ unsigned char	get_type_code(t_list *tokens, t_op *op, int i)
 }
 
 
-void	procces_register(t_asm *sasm, t_token *token)
+void			procces_register(t_asm *sasm, t_token *token)
 {
 	sasm->code[sasm->i++] = ft_atoi(token->content + 1);
 }
 
-t_ref_label	*new_ref(char *name, unsigned start_end[2], unsigned comm_start, t_ctype type)
+t_ref_label		*new_ref(char *name, unsigned start_end[2], unsigned comm_start, t_ctype type)
 {
 	t_ref_label		*ref;
 
@@ -139,7 +139,7 @@ t_ref_label	*new_ref(char *name, unsigned start_end[2], unsigned comm_start, t_c
 	return (ref);
 }
 
-void	procces_dir(t_asm *sasm, t_token *token, int dir_size)
+void			procces_dir(t_asm *sasm, t_token *token, int dir_size)
 {
 	unsigned int	code;
 	unsigned int	start_end[2];
@@ -169,7 +169,7 @@ void	procces_dir(t_asm *sasm, t_token *token, int dir_size)
 	}
 }
 
-void	procces_ind(t_asm *sasm, t_token *token)
+void			procces_ind(t_asm *sasm, t_token *token)
 {
 	unsigned int	code;
 	unsigned int	start_end[2];
@@ -194,7 +194,7 @@ void	procces_ind(t_asm *sasm, t_token *token)
 }
 
 
-void	process_args(t_asm *sasm, t_list *tokens, int dir_size)
+void			process_args(t_asm *sasm, t_list *tokens, int dir_size)
 {
 	if (arg_type(tokens) == T_REG)
 		procces_register(sasm, tokens->content);
@@ -206,7 +206,7 @@ void	process_args(t_asm *sasm, t_list *tokens, int dir_size)
 		error_f("Something wrong", 0);
 }
 
-t_list		*procces_operator(t_asm *sasm, t_list *tokens)
+t_list			*procces_operator(t_asm *sasm, t_list *tokens)
 {
 	t_op	op;
 	int		i;
@@ -231,7 +231,7 @@ t_list		*procces_operator(t_asm *sasm, t_list *tokens)
 	return (tokens->next);
 }
 
-void	check_code_size(t_asm *sasm)
+void			check_code_size(t_asm *sasm)
 {
 	if ((sasm->i + 14) >= sasm->code_size)
 	{
@@ -243,7 +243,7 @@ void	check_code_size(t_asm *sasm)
 	}
 }
 
-t_label	*new_label(char *name, int point)
+t_label			*new_label(char *name, int point)
 {
 	t_label	*label;
 
@@ -257,7 +257,7 @@ t_label	*new_label(char *name, int point)
 	return (label);
 }
 
-t_list	*process_labels(t_asm *sasm, t_list *tokens)
+t_list			*process_labels(t_asm *sasm, t_list *tokens)
 {
 	t_token	*token;
 	t_label	*label;
@@ -269,7 +269,7 @@ t_list	*process_labels(t_asm *sasm, t_list *tokens)
 	return (tokens->next);
 }
 
-void	convert_tokens(t_asm *sasm, t_list *tokens)
+void			convert_tokens(t_asm *sasm, t_list *tokens)
 {
 	sasm->i = 0;
 	sasm->code = malloc(sizeof(char) * (CHAMP_MAX_SIZE + 1));

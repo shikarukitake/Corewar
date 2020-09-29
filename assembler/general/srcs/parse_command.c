@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:28:08 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/20 12:32:36 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 14:30:43 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ void	parse_command(t_asm *sasm, char *row)
 		add_token(sasm, token);
 	}
 	else
+	{
+		if (token)
+			free(token);
 		error_f("Lexical error at", 2);
+	}
 }
 
 void fill_token_content(const t_asm *sasm, const char *row, int start, t_token *token)

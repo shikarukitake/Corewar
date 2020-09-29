@@ -6,7 +6,7 @@
 /*   By: sdagger <sdagger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 12:37:12 by sdagger           #+#    #+#             */
-/*   Updated: 2020/09/29 13:00:47 by sdagger          ###   ########.fr       */
+/*   Updated: 2020/09/29 14:32:47 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,6 @@ void	convert_labels(t_list *list, void *sas)
 	if (!finded)
 		error_f("Can't find reference to token", 0);//todo what token is it?
 	label = finded->content;
-//	ft_printf("%s\n", ref_label->name);
-//	ft_printf("%d % IDX_MOD(%d) = %d\n", label->point - ref_label->comm_start, IDX_MOD, (label->point - ref_label->comm_start) % IDX_MOD);
-//	ft_printf("%d\n", (label->point - ref_label->comm_start) % IDX_MOD);
 	code = label->point - ref_label->comm_start;
 	j = ref_label->start;
 	while (j != ref_label->end)
