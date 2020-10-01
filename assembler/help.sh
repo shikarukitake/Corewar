@@ -17,8 +17,8 @@ then
     $SUBJECT_ASM "$1"
     echo "\033[1;34mDIFF:\033[0m"
     diff $NAME $NAME_COPY
-    xxd temp.cor > bin_temp1
-    xxd temp_copy.cor > bin_temp2
+    xxd $NAME > bin_temp1
+    xxd $NAME_COPY > bin_temp2
     diff bin_temp1 bin_temp2
     rm bin_temp1 bin_temp2
   else
