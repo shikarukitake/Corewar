@@ -6,7 +6,7 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 17:35:53 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/09/20 18:37:03 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/10/03 16:40:48 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 # define HELP_FUNC_H 
 
 # include "corewar_structs.h"
+
+void			terminate(char *s)
+{
+	if (errno == 0)
+		ft_putendl_fd(s, 2);
+	else
+		perror(s);
+	exit(0);
+}
+
+inline char	get_byte(t_vm *vm, int pc, int step)
+{
+	return (vm->arena[calc_addr(pc + step)]);
+}
 
 t_bool	check_tab(char c)
 {

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   op_zjmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/15 15:17:04 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/10/03 16:59:45 by lsedgeki         ###   ########.fr       */
+/*   Created: 2018/11/12 15:17:29 by ablizniu          #+#    #+#             */
+/*   Updated: 2020/10/03 16:18:58 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar_structs.h"
+#include "corewar_structs.h"
 
-int main(int ac, char **av)
+inline static void	log_zjmp(t_cursor *cursor, int addr)
 {
-    t_vm *vi_ma;
-    
-    if (ac > 1)
-    {
-        args_parce(ac, **av, (vi_ma = init_vm()));
-		init_arena(vi_ma);
-		set_cursors(vi_ma);
-		print_intro(vi_ma->players, vi_ma->players_num);
-		start(vi_ma);
-		print_last_alive(vi_ma);
-		free_vm(&vi_ma);
-	}
-	else {
-        err_func();
-		print_help();
-    }
-	return (0);
+	ft_printf("P %4d | zjmp %d %s\n",
+									cursor->id,
+									addr,
+									(cursor->carry) ? "OK" : "FAILED");
+}
+
+void				op_zjmp(t_vm *vm, t_cursor *cursor)
+{
+	int addr;
+
+	cursor->step += OP_CODE_LEN;
+	addr = get_op_arg(vm, cursor, 1, TRUE);
+	if (vm->log & OP_LOG)
+		log_zjmp(cursor, addr);
 }

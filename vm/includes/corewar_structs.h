@@ -6,7 +6,7 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 16:45:46 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/09/29 11:22:59 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/10/03 16:23:00 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,27 @@
 
 # include "libft.h"
 # include "corewar_errors.h"
+# include "global.h"
 # include "op.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <errno.h>
 
+# define OP_CODE_LEN	1
+# define ARGS_CODE_LEN	1
+# define REG_LEN		1
+
+# define LIVE_LOG			1
+# define CYCLE_LOG			2
+# define OP_LOG				4
+# define DEATH_LOG			8
+# define PC_MOVEMENT_LOG	16
+
+static unsigned char	g_arg_code[3] = {
+	T_REG,
+	T_DIR,
+	T_IND
+};
 
 typedef enum {
     FALSE,
@@ -81,7 +98,6 @@ typedef struct			s_vm
 	ssize_t				cycles_to_die;
 	ssize_t				cycles_after_check;
 	size_t				checks_num;
-	struct s_vs			*vs;
 	ssize_t				dump_cycle;
 	int					dump_print_mode;
 	ssize_t				show_cycle;

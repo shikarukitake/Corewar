@@ -6,34 +6,27 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 18:16:56 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/09/29 11:44:34 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/10/03 16:55:05 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_structs.h"
 
-void	parse_dump(int *argc, char ***argv, t_vm *vm)
+void	parse_dump(int *argc, char ***argv, t_vm *vi_ma)
 {
-	if (!vm->dump_print_mode && *argc >= 2 && ft_isint(*(*argv + 1), TRUE))
+	if (!vi_ma->dump_print_mode && *argc >= 2 && ft_isint(*(*argv + 1), TRUE))
 	{
-		if ((vm->dump_cycle = ft_atoi(*(*argv + 1))) < 0)
-			vm->dump_cycle = -1;
+		if ((vi_ma->dump_cycle = ft_atoi(*(*argv + 1))) < 0)
+			vi_ma->dump_cycle = -1;
 		if (!ft_strcmp(**argv, "-d"))
-			vm->dump_print_mode = 64;
+			vi_ma->dump_print_mode = 64;
 		else
-			vm->dump_print_mode = 32;
+			vi_ma->dump_print_mode = 32;
 		(*argc) -= 2;
 		(*argv) += 2;
 	}
 	else
 		print_help();
-}
-
-void parce_vs(int *ac, char **av, t_vm *vi_ma) 
-{
-    vi_ma->vs = init_vs();//add init
-	(*ac)--;
-	(*av)++;
 }
 
 void parce_log(int *ac, char ***av, t_vm *vi_ma)
@@ -48,16 +41,16 @@ void parce_log(int *ac, char ***av, t_vm *vi_ma)
 		print_help();
 }
 
-void	parse_show(int *argc, char ***argv, t_vm *vm)
+void	parse_show(int *argc, char ***argv, t_vm *vi_ma)
 {
-	if (!vm->show_print_mode && *argc >= 2 && ft_isint(*(*argv + 1), TRUE))
+	if (!vi_ma->show_print_mode && *argc >= 2 && ft_isint(*(*argv + 1), TRUE))
 	{
-		if ((vm->show_cycle = ft_atoi(*(*argv + 1))) <= 0)
-			vm->show_cycle = -1;
+		if ((vi_ma->show_cycle = ft_atoi(*(*argv + 1))) <= 0)
+			vi_ma->show_cycle = -1;
 		if (!ft_strcmp(**argv, "-s"))
-			vm->show_print_mode = 64;
+			vi_ma->show_print_mode = 64;
 		else
-			vm->show_print_mode = 32;
+			vi_ma->show_print_mode = 32;
 		(*argc) -= 2;
 		(*argv) += 2;
 	}
@@ -65,9 +58,9 @@ void	parse_show(int *argc, char ***argv, t_vm *vm)
 		print_help();
 }
 
-void	parse_aff(int *argc, char ***argv, t_vm *vm)
+void	parse_aff(int *argc, char ***argv, t_vm *vi_ma)
 {
-	vm->display_aff = TRUE;
+	vi_ma->display_aff = TRUE;
 	(*argc)--;
 	(*argv)++;
 }

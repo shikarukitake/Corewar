@@ -6,7 +6,7 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:22:44 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/09/29 11:39:14 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/10/03 16:58:21 by lsedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	add_player(t_player **player_l, t_player *new)
 static void	parse_champion_filename(int *ac, char ***av, t_vm *vi_ma,
 									t_player **player_l)
 {
-	int32_t id;
+	int id;
 
 	id = 0;
 	if (*ac >= 3 && !ft_strcmp(**av, "-n"))
@@ -58,13 +58,13 @@ static void	parse_champion_filename(int *ac, char ***av, t_vm *vi_ma,
 		(*av)++;
 	}
 	else
-		err_func();
+		print_help();
 }
 
 static void	update_players(t_player *player_l)
 {
 	t_player	*player;
-	int32_t		id;
+	int		id;
 
 	id = 1;
 	player = player_l;
@@ -82,14 +82,14 @@ static void	update_players(t_player *player_l)
 
 static void	set_players(t_vm *vi_ma, t_player *player_l)
 {
-	int32_t id;
+	int id;
 
 	id = 1;
 	update_players(player_l);
 	while (id <= vi_ma->players_num)
 	{
 		if (!(vi_ma->players[id] = find_player(player_l, id)))
-			err_func();
+			print_help();
 		id++;
 	}
 	vi_ma->last_alive = vi_ma->players[vi_ma->players_num];
@@ -117,9 +117,9 @@ void		args_parce(int ac, char **av, t_vm *vi_ma)
 		else if (!ft_strcmp(*av, "-n") || is_champ(*av, ".cor"))
 			parse_champion_filename(&ac, &av, vi_ma, &player_l);
 		else
-			err_func();
+			print_help();
 	}
 	if (vi_ma->players_num < 1 || vi_ma->players_num > MAX_PLAYERS)
-		err_func();
+		print_help();
 	set_players(vi_ma, player_l);
 }
