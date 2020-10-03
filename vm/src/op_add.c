@@ -20,7 +20,7 @@ void	log_add(unsigned int cursor_id,
 	ft_printf("P %4d | add r%d r%d r%d\n", cursor_id, r1_id, r2_id, r3_id);
 }
 
-void				op_add(t_vm *vm, t_cursor *cursor)
+void	op_add(t_vm *vm, t_cursor *cursor)
 {
 	int	r1_id;
 	int	r2_id;

@@ -1,4 +1,16 @@
-#ifndef COREWAR_H 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdagger <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/03 22:48:45 by sdagger           #+#    #+#             */
+/*   Updated: 2020/10/03 22:48:46 by sdagger          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef COREWAR_H
 # define COREWAR_H
 
 # include "libft.h"
@@ -24,21 +36,19 @@ static unsigned char	g_arg_code[3] = {
 	T_IND
 };
 
-typedef enum s_bool
+typedef enum
 {
-    FALSE,
-    TRUE
-} 			t_bool;
-
-
+	FALSE,
+	TRUE
+}	t_bool;
 
 typedef struct			s_player
 {
-	int				id;
+	int					id;
 	char				*name;
 	char				*comment;
-	int				code_size;
-	unsigned char				*code;
+	int					code_size;
+	unsigned char		*code;
 	size_t				current_lives_num;
 	size_t				previous_lives_num;
 	ssize_t				last_live;
@@ -47,24 +57,24 @@ typedef struct			s_player
 
 typedef struct			s_cursor
 {
-	unsigned int			id;
+	unsigned int		id;
 	t_bool				carry;
-	unsigned char				op_code;
+	unsigned char		op_code;
 	ssize_t				last_live;
 	int					cycles_to_exec;
-	unsigned char				args_types[3];
-	int				pc;
-	unsigned int			step;
-	int				reg[REG_NUMBER];
+	unsigned char		args_types[3];
+	int					pc;
+	unsigned int		step;
+	int					reg[REG_NUMBER];
 	t_player			*player;
 	struct s_cursor		*next;
 }						t_cursor;
 
 typedef struct			s_vm
 {
-	unsigned char				arena[MEM_SIZE];
+	unsigned char		arena[MEM_SIZE];
 	t_player			*players[MAX_PLAYERS];
-	int				players_num;
+	int					players_num;
 	t_player			*last_alive;
 	t_cursor			*cursors;
 	size_t				cursors_num;
@@ -83,20 +93,19 @@ typedef struct			s_vm
 
 typedef struct			s_op
 {
-	char		*name;
+	char				*name;
 	unsigned char		code;
 	unsigned char		args_num;
-	t_bool		args_types_code;
+	t_bool				args_types_code;
 	unsigned char		args_types[3];
-	t_bool		modify_carry;
+	t_bool				modify_carry;
 	unsigned char		t_dir_size;
-	unsigned int	cycles;
-	void		(*func)(t_vm *, t_cursor *);
+	unsigned int		cycles;
+	void				(*func)(t_vm *, t_cursor *);
 
 }						t_op;
 
-
-void err_func();
+void					err_func();
 
 void					op_live(t_vm *vm, t_cursor *pc);
 void					op_ld(t_vm *vm, t_cursor *pc);
@@ -114,7 +123,6 @@ void					op_lld(t_vm *vm, t_cursor *cursor);
 void					op_lldi(t_vm *vm, t_cursor *cursor);
 void					op_lfork(t_vm *vm, t_cursor *cursor);
 void					op_aff(t_vm *vm, t_cursor *cursor);
-
 
 static t_op				g_op[16] = {
 	{
@@ -364,8 +372,8 @@ void					add_cursor(t_cursor **list, t_cursor *new);
 void					set_cursors(t_vm *vm);
 int						get_op_arg(t_vm *vm, t_cursor *cursor,
 						unsigned char index, t_bool mod);
-void					int_to_bytecode(unsigned char *arena, int addr, int value,
-						int size);
+void					int_to_bytecode(unsigned char *arena, int addr,
+						int value, int size);
 t_cursor				*duplicate_cursor(t_cursor *cursor, int addr);
 int						ft_abs(int number);
 

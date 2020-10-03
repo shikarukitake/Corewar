@@ -17,9 +17,9 @@ void	log_lfork(t_cursor *cursor, int addr)
 	ft_printf("P %4d | lfork %d (%d)\n", cursor->id, addr, cursor->pc + addr);
 }
 
-void				op_lfork(t_vm *vm, t_cursor *cursor)
+void	op_lfork(t_vm *vm, t_cursor *cursor)
 {
-	int		addr;
+	int			addr;
 	t_cursor	*new;
 
 	cursor->step += OP_CODE_LEN;

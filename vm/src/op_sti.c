@@ -29,7 +29,7 @@ void	log_sti(t_cursor *cursor,
 							cursor->pc + ((addr_1 + addr_2) % IDX_MOD));
 }
 
-void				op_sti(t_vm *vm, t_cursor *cursor)
+void	op_sti(t_vm *vm, t_cursor *cursor)
 {
 	int	r_id;
 	int	value;

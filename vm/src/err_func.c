@@ -12,6 +12,7 @@
 
 #include "corewar.h"
 
-void err_func() {
-    ft_printf("Something went wrong, please donate to our project for fix");
+void	err_func(void)
+{
+	ft_printf("Something went wrong, please donate to our project for fix");
 }

@@ -17,7 +17,7 @@ void	log_cycle(ssize_t cycle)
 	ft_printf("It is now cycle %zd\n", cycle);
 }
 
-void		log_pc_movements(unsigned char *arena, t_cursor *cursor)
+void	log_pc_movements(unsigned char *arena, t_cursor *cursor)
 {
 	unsigned i;
 

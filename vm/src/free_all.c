@@ -42,7 +42,7 @@ void	free_cursors(t_cursor **list)
 	*list = NULL;
 }
 
-void		free_vi_ma(t_vm **vi_ma)
+void	free_vi_ma(t_vm **vi_ma)
 {
 	free_players((*vi_ma)->players, (*vi_ma)->players_num);
 	free_cursors(&((*vi_ma)->cursors));

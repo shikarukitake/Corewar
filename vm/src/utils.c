@@ -12,11 +12,12 @@
 
 #include "corewar.h"
 
-int		bytecode_to_int_utils(const unsigned char *arena, int addr, int size)
+int			bytecode_to_int_utils(const unsigned char *arena,
+			int addr, int size)
 {
 	int		result;
-	t_bool		sign;
-	int			i;
+	t_bool	sign;
+	int		i;
 
 	result = 0;
 	sign = (t_bool)(arena[calc_addr(addr)] & 0x80);
@@ -42,16 +43,17 @@ void		int_to_bytecode(unsigned char *arena, int addr, int value,
 	i = 0;
 	while (size)
 	{
-		arena[calc_addr(addr + size - 1)] = (unsigned char)((value >> i) & 0xFF);
+		arena[calc_addr(addr + size - 1)] =
+		(unsigned char)((value >> i) & 0xFF);
 		i += 8;
 		size--;
 	}
 }
 
-int		get_op_arg(t_vm *vm, t_cursor *cursor,
+int			get_op_arg(t_vm *vm, t_cursor *cursor,
 					unsigned char index, t_bool mod)
 {
-	t_op		*op;
+	t_op	*op;
 	int		value;
 	int		addr;
 
@@ -94,7 +96,7 @@ t_cursor	*duplicate_cursor(t_cursor *cursor, int addr)
 	return (new);
 }
 
-int		ft_abs(int number)
+int			ft_abs(int number)
 {
 	if (number < 0)
 		return (number * -1);

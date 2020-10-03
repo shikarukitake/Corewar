@@ -12,10 +12,9 @@
 
 #include "corewar.h"
 
-
-void	add_player(t_player **player_l, t_player *new)
+void		add_player(t_player **player_l, t_player *new)
 {
-	t_player *current;
+	t_player	*current;
 
 	if (player_l && new)
 	{
@@ -31,10 +30,10 @@ void	add_player(t_player **player_l, t_player *new)
 	}
 }
 
-void	parse_champion_filename(int *ac, char ***av, t_vm *vi_ma,
+void		parse_champion_filename(int *ac, char ***av, t_vm *vi_ma,
 									t_player **player_l)
 {
-	int id;
+	int		id;
 
 	id = 0;
 	if (*ac >= 3 && !ft_strcmp(**av, "-n"))
@@ -61,10 +60,10 @@ void	parse_champion_filename(int *ac, char ***av, t_vm *vi_ma,
 		print_help();
 }
 
-void	update_players(t_player *player_l)
+void		update_players(t_player *player_l)
 {
 	t_player	*player;
-	int		id;
+	int			id;
 
 	id = 1;
 	player = player_l;
@@ -80,9 +79,9 @@ void	update_players(t_player *player_l)
 	}
 }
 
-void	set_players(t_vm *vi_ma, t_player *player_l)
+void		set_players(t_vm *vi_ma, t_player *player_l)
 {
-	int id;
+	int		id;
 
 	id = 1;
 	update_players(player_l);
@@ -97,7 +96,7 @@ void	set_players(t_vm *vi_ma, t_player *player_l)
 
 void		args_parce(int ac, char **av, t_vm *vi_ma)
 {
-	t_player *player_l;
+	t_player	*player_l;
 
 	player_l = NULL;
 	ac--;

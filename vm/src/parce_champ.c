@@ -13,9 +13,9 @@
 #include "corewar.h"
 #include <fcntl.h>
 
-int	bytecode_to_int(const unsigned char *bytecode, size_t size)
+int				bytecode_to_int(const unsigned char *bytecode, size_t size)
 {
-	int	result;
+	int		result;
 	t_bool	sign;
 	int		i;
 
@@ -35,9 +35,9 @@ int	bytecode_to_int(const unsigned char *bytecode, size_t size)
 	return (result);
 }
 
-int	parse_int(int fd)
+int				parse_int(int fd)
 {
-	ssize_t	size;
+	ssize_t			size;
 	unsigned char	buffer[4];
 
 	size = read(fd, &buffer, 4);
@@ -48,7 +48,7 @@ int	parse_int(int fd)
 	return (bytecode_to_int(buffer, 4));
 }
 
-char		*parse_str(int fd, size_t len)
+char			*parse_str(int fd, size_t len)
 {
 	ssize_t	size;
 	char	*buffer;
@@ -65,7 +65,7 @@ char		*parse_str(int fd, size_t len)
 
 unsigned char	*parse_code(int fd, size_t len)
 {
-	ssize_t	size;
+	ssize_t			size;
 	unsigned char	*buffer;
 	unsigned char	byte;
 

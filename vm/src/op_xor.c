@@ -20,7 +20,7 @@ void	log_xor(unsigned int cursor_id,
 	ft_printf("P %4d | xor %d %d r%d\n", cursor_id, value_1, value_2, r_id);
 }
 
-void				op_xor(t_vm *vm, t_cursor *cursor)
+void	op_xor(t_vm *vm, t_cursor *cursor)
 {
 	int	value_1;
 	int	value_2;

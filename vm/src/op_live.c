@@ -24,9 +24,9 @@ void	log_live_msg(int player_id, char *player_name)
 													player_name);
 }
 
-void				op_live(t_vm *vm, t_cursor *cursor)
+void	op_live(t_vm *vm, t_cursor *cursor)
 {
-	int		player_id;
+	int			player_id;
 	t_player	*player;
 
 	cursor->step += OP_CODE_LEN;

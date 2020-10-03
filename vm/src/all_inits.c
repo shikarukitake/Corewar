@@ -17,7 +17,7 @@ t_player	*init_player(int id)
 	t_player *player;
 
 	if (!(player = (t_player *)ft_memalloc(sizeof(t_player))))
-		
+		terminate(PLAYER_INIT);
 	player->id = id;
 	player->name = NULL;
 	player->comment = NULL;
@@ -33,10 +33,11 @@ t_player	*init_player(int id)
 t_cursor	*init_cursor(t_player *player, int pc)
 {
 	t_cursor		*cursor;
-	unsigned int cursor_id;
+	unsigned int	cursor_id;
 
 	cursor_id = 0;//check
 	if (!(cursor = (t_cursor *)ft_memalloc(sizeof(t_cursor))))
+		terminate(CURSOR_INIT);
 	cursor->id = ++cursor_id;
 	cursor->carry = FALSE;
 	cursor->op_code = 0;
@@ -54,6 +55,7 @@ t_vm		*init_vm(void)
 	t_vm *vi_ma;
 
 	if (!(vi_ma = (t_vm *)ft_memalloc(sizeof(t_vm))))
+		terminate(VM_INIT);
 	vi_ma->players_num = 0;
 	vi_ma->last_alive = NULL;
 	vi_ma->cursors = NULL;
@@ -74,7 +76,7 @@ t_vm		*init_vm(void)
 
 void		init_arena(t_vm *vi_ma)
 {
-	int			id;
+	int				id;
 	unsigned int	pc;
 
 	id = 1;

@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void			terminate(char *s)
+void		terminate(char *s)
 {
 	if (errno == 0)
 		ft_putendl_fd(s, 2);
@@ -21,20 +21,20 @@ void			terminate(char *s)
 	exit(0);
 }
 
-char	get_byte(t_vm *vm, int pc, int step)
+char		get_byte(t_vm *vm, int pc, int step)
 {
 	return (vm->arena[calc_addr(pc + step)]);
 }
 
-t_bool	check_tab(char c)
+t_bool		check_tab(char c)
 {
 	if (c == '\n' || c == '\t' || c == ' '
-			|| c == '\v' || c == '\f' || c == '\r')
-            return (TRUE);
-    return (FALSE);
+	|| c == '\v' || c == '\f' || c == '\r')
+		return (TRUE);
+	return (FALSE);
 }
 
-t_bool	check_integer(const char *str, t_bool strict)
+t_bool		check_integer(const char *str, t_bool strict)
 {
 	unsigned int	result;
 	unsigned int	border;

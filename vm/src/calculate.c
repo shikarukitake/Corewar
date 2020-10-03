@@ -25,7 +25,7 @@ unsigned int	step_size(unsigned char arg_type, t_op *op)
 
 unsigned int	calc_step(t_cursor *cursor, t_op *op)
 {
-	int		i;
+	int				i;
 	unsigned int	step;
 
 	i = 0;
@@ -39,7 +39,7 @@ unsigned int	calc_step(t_cursor *cursor, t_op *op)
 	return (step);
 }
 
-int		calc_addr(int addr)
+int				calc_addr(int addr)
 {
 	addr %= MEM_SIZE;
 	if (addr < 0)

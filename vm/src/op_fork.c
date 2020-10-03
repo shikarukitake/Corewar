@@ -20,9 +20,9 @@ void	log_fork(t_cursor *cursor, int addr)
 										cursor->pc + addr % IDX_MOD);
 }
 
-void				op_fork(t_vm *vm, t_cursor *cursor)
+void	op_fork(t_vm *vm, t_cursor *cursor)
 {
-	int		addr;
+	int			addr;
 	t_cursor	*new;
 
 	cursor->step += OP_CODE_LEN;

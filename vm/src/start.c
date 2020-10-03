@@ -12,14 +12,14 @@
 
 #include "corewar.h"
 
-void	update_op_code(t_vm *vm, t_cursor *current)
+void		update_op_code(t_vm *vm, t_cursor *current)
 {
 	current->op_code = vm->arena[current->pc];
 	if (vm->arena[current->pc] >= 0x01 && vm->arena[current->pc] <= 0x10)
 		current->cycles_to_exec = g_op[-1 + (current->op_code)].cycles;
 }
 
-void	move_cursor(t_cursor *cursor)
+void		move_cursor(t_cursor *cursor)
 {
 	cursor->pc += cursor->step;
 	cursor->pc = calc_addr(cursor->pc);
@@ -27,7 +27,7 @@ void	move_cursor(t_cursor *cursor)
 	ft_bzero(cursor->args_types, 3);
 }
 
-void	do_op(t_cursor *cursor, t_vm *vm)
+void		do_op(t_cursor *cursor, t_vm *vm)
 {
 	t_op *op;
 

@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void		reset_lives_nums(t_vm *vm)
+void	reset_lives_nums(t_vm *vm)
 {
 	int		i;
 
@@ -32,7 +32,7 @@ t_bool	is_died(t_vm *vm, t_cursor *cursor)
 			|| vm->cycles - cursor->last_live >= vm->cycles_to_die);
 }
 
-void		delete_died_cursors(t_vm *vm)
+void	delete_died_cursors(t_vm *vm)
 {
 	t_cursor	*previous;
 	t_cursor	*current;
@@ -59,7 +59,7 @@ void		delete_died_cursors(t_vm *vm)
 		}
 }
 
-void			cycles_to_die_check(t_vm *vm)
+void	cycles_to_die_check(t_vm *vm)
 {
 	vm->checks_num++;
 	delete_died_cursors(vm);

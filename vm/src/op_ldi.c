@@ -25,7 +25,7 @@ void	log_ldi(t_cursor *cursor,
 									cursor->pc + (addr_1 + addr_2) % IDX_MOD);
 }
 
-void				op_ldi(t_vm *vm, t_cursor *cursor)
+void	op_ldi(t_vm *vm, t_cursor *cursor)
 {
 	int	addr_1;
 	int	addr_2;

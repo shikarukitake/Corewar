@@ -29,7 +29,7 @@ void		print_intro(t_player **players, int players_num)
 	}
 }
 
-void	print_winner(t_vm *vm)
+void		print_winner(t_vm *vm)
 {
 	ft_printf("Player %d, \"%s\", has won !\n",
 													ft_abs(vm->last_alive->id),

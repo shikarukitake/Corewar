@@ -17,7 +17,7 @@ void	log_st(unsigned int cursor_id, int r_id, int addr)
 	ft_printf("P %4d | st r%d %d\n", cursor_id, r_id, addr);
 }
 
-void				op_st(t_vm *vm, t_cursor *cursor)
+void	op_st(t_vm *vm, t_cursor *cursor)
 {
 	int	r_id;
 	int	r_value;

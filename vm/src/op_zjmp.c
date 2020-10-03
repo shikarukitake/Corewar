@@ -20,7 +20,7 @@ void	log_zjmp(t_cursor *cursor, int addr)
 									(cursor->carry) ? "OK" : "FAILED");
 }
 
-void				op_zjmp(t_vm *vm, t_cursor *cursor)
+void	op_zjmp(t_vm *vm, t_cursor *cursor)
 {
 	int addr;
 
