@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
 void		print_intro(t_player **players, int players_num)
 {
@@ -22,17 +22,17 @@ void		print_intro(t_player **players, int players_num)
 	{
 		ft_printf("Player %d, takes %d bytes, \"%s\" (\"%s\") !\n",
 												id,
-												players[INDEX(id)]->code_size,
-												players[INDEX(id)]->name,
-												players[INDEX(id)]->comment);
+												players[-1 + (id)]->code_size,
+												players[-1 + (id)]->name,
+												players[-1 + (id)]->comment);
 		id++;
 	}
 }
 
-inline void	print_winner(t_vm *vm)
+void	print_winner(t_vm *vm)
 {
 	ft_printf("Player %d, \"%s\", has won !\n",
-													FT_ABS(vm->last_alive->id),
+													ft_abs(vm->last_alive->id),
 													vm->last_alive->name);
 }
 

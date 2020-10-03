@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
-inline void	log_cycle(ssize_t cycle)
+void	log_cycle(ssize_t cycle)
 {
 	ft_printf("It is now cycle %zd\n", cycle);
 }
@@ -34,7 +34,7 @@ void		log_pc_movements(unsigned char *arena, t_cursor *cursor)
 	ft_printf("\n");
 }
 
-inline void	log_cursor_death(t_vm *vm, t_cursor *cursor)
+void	log_cursor_death(t_vm *vm, t_cursor *cursor)
 {
 	ft_printf("Process %d hasn't lived for %zu cycles (CTD %zd)\n",
 												cursor->id,
@@ -42,7 +42,7 @@ inline void	log_cursor_death(t_vm *vm, t_cursor *cursor)
 												vm->cycles_to_die);
 }
 
-inline void	log_cycles_to_die(ssize_t cycles_to_die)
+void	log_cycles_to_die(ssize_t cycles_to_die)
 {
 	ft_printf("Cycle to die is now %zd\n", cycles_to_die);
 }

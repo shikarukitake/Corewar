@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
 t_player	*init_player(int id)
 {
@@ -33,8 +33,9 @@ t_player	*init_player(int id)
 t_cursor	*init_cursor(t_player *player, int pc)
 {
 	t_cursor		*cursor;
-	static unsigned int cursor_id;
+	unsigned int cursor_id;
 
+	cursor_id = 0;//check
 	if (!(cursor = (t_cursor *)ft_memalloc(sizeof(t_cursor))))
 	cursor->id = ++cursor_id;
 	cursor->carry = FALSE;
@@ -43,7 +44,7 @@ t_cursor	*init_cursor(t_player *player, int pc)
 	cursor->cycles_to_exec = 0;
 	cursor->pc = pc;
 	cursor->next = NULL;
-	cursor->reg[INDEX(1)] = -(player->id);
+	cursor->reg[0] = -(player->id);
 	cursor->player = player;
 	return (cursor);
 }
@@ -81,8 +82,8 @@ void		init_arena(t_vm *vi_ma)
 	while (id <= vi_ma->players_num)
 	{
 		ft_memcpy(&(vi_ma->arena[pc]),
-			vi_ma->players[INDEX(id)]->code,
-			(size_t)(vi_ma->players[INDEX(id)]->code_size));
+			vi_ma->players[id - 1]->code,
+			(size_t)(vi_ma->players[id - 1]->code_size));
 		pc += MEM_SIZE / vi_ma->players_num;
 		id++;
 	}

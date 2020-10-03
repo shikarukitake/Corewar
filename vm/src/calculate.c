@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
 unsigned int	step_size(unsigned char arg_type, t_op *op)
 {
@@ -31,7 +31,7 @@ unsigned int	calc_step(t_cursor *cursor, t_op *op)
 	i = 0;
 	step = 0;
 	step += OP_CODE_LEN + (op->args_types_code ? ARGS_CODE_LEN : 0);
-	while (i < g_op[INDEX(cursor->op_code)].args_num)
+	while (i < g_op[-1 + (cursor->op_code)].args_num)
 	{
 		step += step_size(cursor->args_types[i], op);
 		i++;

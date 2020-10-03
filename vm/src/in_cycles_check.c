@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
-static void		reset_lives_nums(t_vm *vm)
+void		reset_lives_nums(t_vm *vm)
 {
 	int		i;
 
@@ -26,13 +26,13 @@ static void		reset_lives_nums(t_vm *vm)
 	vm->lives_num = 0;
 }
 
-static t_bool	is_died(t_vm *vm, t_cursor *cursor)
+t_bool	is_died(t_vm *vm, t_cursor *cursor)
 {
 	return (vm->cycles_to_die <= 0
 			|| vm->cycles - cursor->last_live >= vm->cycles_to_die);
 }
 
-static void		delete_died_cursors(t_vm *vm)
+void		delete_died_cursors(t_vm *vm)
 {
 	t_cursor	*previous;
 	t_cursor	*current;

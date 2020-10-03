@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
 t_bool			is_arg_types_valid(t_cursor *cursor, t_op *op)
 {
@@ -26,7 +26,7 @@ t_bool			is_arg_types_valid(t_cursor *cursor, t_op *op)
 	return (TRUE);
 }
 
-static t_bool	is_register(t_vm *vm, int pc, int step)
+t_bool	is_register(t_vm *vm, int pc, int step)
 {
 	int8_t r_id;
 

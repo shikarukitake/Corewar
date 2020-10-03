@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 #include <fcntl.h>
 
-static int	bytecode_to_int(const unsigned char *bytecode, size_t size)
+int	bytecode_to_int(const unsigned char *bytecode, size_t size)
 {
 	int	result;
 	t_bool	sign;
@@ -35,7 +35,7 @@ static int	bytecode_to_int(const unsigned char *bytecode, size_t size)
 	return (result);
 }
 
-static int	parse_int(int fd)
+int	parse_int(int fd)
 {
 	ssize_t	size;
 	unsigned char	buffer[4];
@@ -48,7 +48,7 @@ static int	parse_int(int fd)
 	return (bytecode_to_int(buffer, 4));
 }
 
-static char		*parse_str(int fd, size_t len)
+char		*parse_str(int fd, size_t len)
 {
 	ssize_t	size;
 	char	*buffer;
@@ -63,7 +63,7 @@ static char		*parse_str(int fd, size_t len)
 	return (buffer);
 }
 
-static unsigned char	*parse_code(int fd, size_t len)
+unsigned char	*parse_code(int fd, size_t len)
 {
 	ssize_t	size;
 	unsigned char	*buffer;

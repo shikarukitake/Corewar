@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HELP_FUNC_H
-# define HELP_FUNC_H 
-
-# include "corewar_structs.h"
+#include "corewar.h"
 
 void			terminate(char *s)
 {
@@ -24,7 +21,7 @@ void			terminate(char *s)
 	exit(0);
 }
 
-inline char	get_byte(t_vm *vm, int pc, int step)
+char	get_byte(t_vm *vm, int pc, int step)
 {
 	return (vm->arena[calc_addr(pc + step)]);
 }
@@ -83,5 +80,3 @@ t_player	*find_player(t_player *players_l, int id)
 	}
 	return (player);
 }
-
-#endif

@@ -10,24 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
-static void	free_players(t_player **players, int players_num)
+void	free_players(t_player **players, int players_num)
 {
 	int id;
 
 	id = 1;
 	while (id <= players_num)
 	{
-		ft_strdel(&(players[INDEX(id)]->name));
-		ft_strdel(&(players[INDEX(id)]->comment));
-		ft_memdel((void **)&(players[INDEX(id)]->code));
-		ft_memdel((void **)&players[INDEX(id)]);
+		ft_strdel(&(players[-1 + (id)]->name));
+		ft_strdel(&(players[-1 + (id)]->comment));
+		ft_memdel((void **)&(players[-1 + (id)]->code));
+		ft_memdel((void **)&players[-1 + (id)]);
 		id++;
 	}
 }
 
-static void	free_cursors(t_cursor **list)
+void	free_cursors(t_cursor **list)
 {
 	t_cursor	*current;
 	t_cursor	*delete;

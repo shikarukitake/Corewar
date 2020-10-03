@@ -10,25 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar_structs.h"
+#include "corewar.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_vm *vi_ma;
-    
-    if (ac > 1)
-    {
-        args_parce(ac, **av, (vi_ma = init_vm()));
+	t_vm	*vi_ma;
+
+	if (ac > 1)
+	{
+		args_parce(ac, av, (vi_ma = init_vm()));
 		init_arena(vi_ma);
 		set_cursors(vi_ma);
 		print_intro(vi_ma->players, vi_ma->players_num);
 		start(vi_ma);
-		print_last_alive(vi_ma);
-		free_vm(&vi_ma);
+		print_winner(vi_ma);
+		free_vi_ma(&vi_ma);
 	}
-	else {
-        err_func();
+	else
+	{
+		err_func();
 		print_help();
-    }
+	}
 	return (0);
 }

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar_structs.h"
+#include "corewar.h"
 
 void	parse_dump(int *argc, char ***argv, t_vm *vi_ma)
 {
-	if (!vi_ma->dump_print_mode && *argc >= 2 && ft_isint(*(*argv + 1), TRUE))
+	if (!vi_ma->dump_print_mode && *argc >= 2 && check_integer(*(*argv + 1), TRUE))
 	{
 		if ((vi_ma->dump_cycle = ft_atoi(*(*argv + 1))) < 0)
 			vi_ma->dump_cycle = -1;
@@ -29,9 +29,9 @@ void	parse_dump(int *argc, char ***argv, t_vm *vi_ma)
 		print_help();
 }
 
-void parce_log(int *ac, char ***av, t_vm *vi_ma)
+void	parse_log(int *ac, char ***av, t_vm *vi_ma)
 {
-    if (*ac >= 2 && ft_isint(*(*av + 1), TRUE))
+    if (*ac >= 2 && check_integer(*(*av + 1), TRUE))
 	{
 		vi_ma->log = ft_atoi(*(*av + 1));
 		(*ac) -= 2;
@@ -43,7 +43,7 @@ void parce_log(int *ac, char ***av, t_vm *vi_ma)
 
 void	parse_show(int *argc, char ***argv, t_vm *vi_ma)
 {
-	if (!vi_ma->show_print_mode && *argc >= 2 && ft_isint(*(*argv + 1), TRUE))
+	if (!vi_ma->show_print_mode && *argc >= 2 && check_integer(*(*argv + 1), TRUE))
 	{
 		if ((vi_ma->show_cycle = ft_atoi(*(*argv + 1))) <= 0)
 			vi_ma->show_cycle = -1;
