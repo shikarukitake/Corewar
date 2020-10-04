@@ -1,5 +1,4 @@
-.name       "Batman"
-.comment    "This city needs me"
+.name "Batman"
+.comment "This city needs me"
 
-loop:
-        sti r1, %:loop, %1
+sti r1, %0, %1
