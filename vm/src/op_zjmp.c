@@ -26,6 +26,11 @@ void	op_zjmp(t_vm *vm, t_cursor *cursor)
 
 	cursor->step += OP_CODE_LEN;
 	addr = get_op_arg(vm, cursor, 1, TRUE);
+	if (cursor->carry)
+	{
+		cursor->pc = calc_addr(cursor->pc + (addr % IDX_MOD));
+		cursor->step = 0;
+	}
 	if (vm->log & OP_LOG)
 		log_zjmp(cursor, addr);
 }

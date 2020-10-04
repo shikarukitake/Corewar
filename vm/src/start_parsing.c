@@ -43,7 +43,7 @@ void		parse_champion_filename(int *ac, char ***av, t_vm *vi_ma,
 			|| id > MAX_PLAYERS
 			|| find_player(*player_l, id)
 			|| !is_champ(*(*av + 2), ".cor"))
-			err_func();
+			print_help();
 		add_player(player_l, parse_champion(*(*av + 2), id));
 		vi_ma->players_num++;
 		(*ac) -= 3;

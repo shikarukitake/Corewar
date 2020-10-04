@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 {
 	t_vm	*vi_ma;
 
+	errno = 0;
 	if (ac > 1)
 	{
 		args_parce(ac, av, (vi_ma = init_vm()));
@@ -27,9 +28,6 @@ int	main(int ac, char **av)
 		free_vi_ma(&vi_ma);
 	}
 	else
-	{
-		err_func();
 		print_help();
-	}
 	return (0);
 }

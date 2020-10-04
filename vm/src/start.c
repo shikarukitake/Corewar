@@ -39,7 +39,7 @@ void		do_op(t_cursor *cursor, t_vm *vm)
 	{
 		op = NULL;
 		if (cursor->op_code >= 0x01 && cursor->op_code <= 0x10)
-			op = &g_op[-1 + (cursor->op_code)];
+			op = &g_op[cursor->op_code - 1];
 		if (op)
 		{
 			parse_types_code(vm, cursor, op);

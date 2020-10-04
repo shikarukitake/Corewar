@@ -65,9 +65,9 @@ char			*parse_str(int fd, size_t len)
 
 unsigned char	*parse_code(int fd, size_t len)
 {
-	ssize_t			size;
-	unsigned char	*buffer;
-	unsigned char	byte;
+	ssize_t	size;
+	uint8_t	*buffer;
+	uint8_t	byte;
 
 	if (!(buffer = malloc(len)))
 		terminate(CODE_INIT);

@@ -33,9 +33,8 @@ t_player	*init_player(int id)
 t_cursor	*init_cursor(t_player *player, int pc)
 {
 	t_cursor		*cursor;
-	unsigned int	cursor_id;
+	static unsigned	cursor_id;
 
-	cursor_id = 0;//check
 	if (!(cursor = (t_cursor *)ft_memalloc(sizeof(t_cursor))))
 		terminate(CURSOR_INIT);
 	cursor->id = ++cursor_id;

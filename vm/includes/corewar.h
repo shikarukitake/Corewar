@@ -48,7 +48,7 @@ typedef struct			s_player
 	char				*name;
 	char				*comment;
 	int					code_size;
-	unsigned char		*code;
+	uint8_t				*code;
 	size_t				current_lives_num;
 	size_t				previous_lives_num;
 	ssize_t				last_live;
