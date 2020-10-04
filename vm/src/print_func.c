@@ -6,7 +6,7 @@
 /*   By: lsedgeki <lsedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:37:03 by lsedgeki          #+#    #+#             */
-/*   Updated: 2020/10/03 16:57:04 by lsedgeki         ###   ########.fr       */
+/*   Updated: 2020/10/04 12:27:39 by sdagger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void		print_intro(t_player **players, int players_num)
 	int id;
 
 	id = 1;
-	ft_printf("Introduction\n");
+	ft_printf("Introducing contestants...\n");
 	while (id <= players_num)
 	{
-		ft_printf("Player %d, takes %d bytes, \"%s\" (\"%s\") !\n",
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 												id,
 												players[-1 + (id)]->code_size,
 												players[-1 + (id)]->name,
@@ -31,7 +31,7 @@ void		print_intro(t_player **players, int players_num)
 
 void		print_winner(t_vm *vm)
 {
-	ft_printf("Player %d, \"%s\", has won !\n",
+	ft_printf("Contestant %d, \"%s\", has won !\n",
 													ft_abs(vm->last_alive->id),
 													vm->last_alive->name);
 }
@@ -75,7 +75,6 @@ void		print_help(void)
 	ft_printf("            %9s : Show operations\n", "4 ");
 	ft_printf("            %9s : Show deaths\n", "8 ");
 	ft_printf("            %9s : Show PC movements\n", "16");
-	ft_printf("    %-11s : Run visualizer\n", "-v");
 	ft_printf("    %-11s : Set <num> of the next player\n", "-n    <num>");
 	exit(0);
 }
