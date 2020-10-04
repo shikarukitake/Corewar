@@ -58,8 +58,7 @@ void		print_arena(unsigned char *arena, int print_mode)
 
 void		print_help(void)
 {
-	ft_printf("Usage: ./corewar [-a (-dump|-d) <num> (-shed|-s) <num> -l"\
-							" <num>] [-v] [-n <num>] <champion.cor> <...>\n");
+	ft_printf("Usage: ./corewar <champion.cor>\n");
 	ft_printf("    %-11s : Print output from \"aff\" (Default is off)\n", "-a");
 	ft_printf("    %-11s : Dump memory (32 octets per line)"\
 							" after <num> cycles and exit\n", "-dump <num>");

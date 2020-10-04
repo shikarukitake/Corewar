@@ -1,7 +1,10 @@
 NAME_1 = asm
 NAME_2 = corewar
+NAME_3 = disasm
 
 LIBFT_A = libftprintf.a
+
+#asm
 
 SR_LI_1 =	convert_tokens.c \
 			find_name_and_comment.c \
@@ -11,15 +14,20 @@ SR_LI_1 =	convert_tokens.c \
 			read_file.c \
 			special_gnl.c \
 			token.c \
-			debug_only.c \
-            main.c \
-            parse_label.c \
-            parse_some.c \
-            process_file_extra.c \
-            service.c \
-            t_asm.c \
+			main.c \
+			parse_label.c \
+			parse_some.c \
+			process_file_extra.c \
+			service.c \
+			t_asm.c \
 			write_file.c \
 			special_atoi.c \
+			get_type.c \
+			convert_tokens_part.c \
+			new_get.c \
+			parse_some_part.c \
+			procces_args.c \
+			skip_some.c \
 
 SOURCES_DIR_1 = ./assembler/general/srcs/
 SRCS_LI_1 = $(addprefix $(SOURCES_DIR_1), $(SR_LI_1))
@@ -27,6 +35,7 @@ OBJECT_DIR_1 = objects1/
 OBJ_LIST_LI_1 = $(patsubst %.c, %.o, $(SR_LI_1))
 OBJ_LI_1 = $(addprefix $(OBJECT_DIR_1), $(OBJ_LIST_LI_1))
 
+#corewar
 
 SR_LI_2 =	all_inits.c \
 			calculate.c \
@@ -68,6 +77,19 @@ OBJECT_DIR_2 = objects2/
 OBJ_LIST_LI_2 = $(patsubst %.c, %.o, $(SR_LI_2))
 OBJ_LI_2 = $(addprefix $(OBJECT_DIR_2), $(OBJ_LIST_LI_2))
 
+SR_LI_3 =	main.c \
+			reader.c \
+			reader_code.c \
+			writer.c \
+			utils.c \
+			utils_struct.c
+
+SOURCES_DIR_3 = ./disassembler/src/
+SRCS_LI_3 = $(addprefix $(SOURCES_DIR_3), $(SR_LI_3))
+OBJECT_DIR_3 = objects3/
+OBJ_LIST_LI_3 = $(patsubst %.c, %.o, $(SR_LI_3))
+OBJ_LI_3 = $(addprefix $(OBJECT_DIR_3), $(OBJ_LIST_LI_3))
+
 HEADER_DIR = ./general/includes/
 
 LIB_MLX = minilibx/libmlx.a
@@ -78,14 +100,15 @@ COMPILER := gcc
 HDRPATH := ./assembler/general/includes -I./vm/includes -I./libftprintf/includes
 IFLAGS := -I$(HDRPATH)
 IFLAGS_COREWAR = -I./vm/includes -I./libftprintf/includes
-CFLAGS := -Wall -Wextra -Werror -O2 -g
+IFLAGS_DISASM = -I./disassembler/includes -I./libftprintf/includes
+CFLAGS := -Wall -Wextra -Werror -O2
 
 LIB_DIR = ./libftprintf
 LIB_RULE = $(addsuffix .lib, $(LIB_DIR))
 
 LIBFT = ./libftprintf/libftprintf.a
 
-all: $(LIB_RULE) $(NAME_1) $(NAME_2)
+all: $(LIB_RULE) $(NAME_1) $(NAME_2) $(NAME_3)
 
 %.lib:
 	@$(MAKE) -sC $(LIB_DIR)
@@ -116,6 +139,19 @@ $(OBJECT_DIR_2)%.o : $(SOURCES_DIR_2)%.c
 	@$(COMPILER) $(CFLAGS) -c $(IFLAGS_COREWAR) $< -o $@
 	@echo "\x1b[32m.\x1b[0m\c"
 
+# DISASM
+
+$(NAME_3): $(LIBFT) $(OBJECT_DIR_3) $(OBJ_LI_3)
+	@$(COMPILER) $(CFLAGS) $(IFLAGS_DISASM) $(LIBFT) $(OBJ_LI_3) -o $(NAME_3)
+	@echo "\n\x1b[32mdisasm compiled\x1b[0m"
+
+$(OBJECT_DIR_3):
+	@mkdir -p $(OBJECT_DIR_3)
+
+$(OBJECT_DIR_3)%.o : $(SOURCES_DIR_3)%.c
+	@$(COMPILER) $(CFLAGS) -c $(IFLAGS_DISASM) $< -o $@
+	@echo "\x1b[32m.\x1b[0m\c"
+
 # LIBFT
 
 $(LIBFT):
@@ -124,6 +160,7 @@ $(LIBFT):
 clean:
 	@rm -rf $(OBJECT_DIR_1)
 	@rm -rf $(OBJECT_DIR_2)
+	@rm -rf $(OBJECT_DIR_3)
 	@make -C $(LIB_DIR) clean
 	@rm -rf $(OBJECT_PF)
 
@@ -131,5 +168,6 @@ fclean: clean
 	@make -C $(LIB_DIR) fclean
 	@/bin/rm -f $(NAME_1)
 	@/bin/rm -f $(NAME_2)
+	@/bin/rm -f $(NAME_3)
 
 re: fclean all
